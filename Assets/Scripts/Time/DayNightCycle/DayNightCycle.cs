@@ -5,13 +5,12 @@ using UnityEngine;
 public class DayNightCycle : MonoBehaviour
 {
     [SerializeField] private Light sun;
-    [SerializeField] private float timeOfDay;
-    [SerializeField] private float cycleLength = 24f;
+    public TimeController time;
 
     private void Update()
     {
-        timeOfDay = (timeOfDay + Time.deltaTime) % cycleLength;
-        SunRotation(timeOfDay / cycleLength);
+        time.UpdateTime();
+        SunRotation(time.timeOfDay / time.cycleLength);
     }
 
     private void SunRotation(float timePercent)
