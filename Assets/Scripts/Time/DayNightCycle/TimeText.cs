@@ -10,7 +10,6 @@ public class TimeText : MonoBehaviour
 
     private void Update()
     {
-        time.UpdateTime();
         UpdateTimeText();
     }
     private void UpdateTimeText()

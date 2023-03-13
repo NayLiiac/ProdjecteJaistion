@@ -6,6 +6,7 @@ public class DayNightCycle : MonoBehaviour
 {
     [SerializeField] private Light sun;
     public TimeController time;
+    
 
     private void Update()
     {
