@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Speed2Time : MonoBehaviour
 {
-    public TimeController time;
-
     public bool isTimeTwo = false;
 
 
@@ -16,12 +14,12 @@ public class Speed2Time : MonoBehaviour
         {
             if (!isTimeTwo)
             {
-                isTimeTwo=true;
+                isTimeTwo = true;
             }
 
             else
             {
-                isTimeTwo=false;
+                isTimeTwo = false;
             }
 
 
