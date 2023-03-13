@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TestAlexia.unity
+    guid: d8a8c47d563d55145bf356883542297a
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 9724c3bc71c9fc84cb09ca27b5bd6f8a
   m_configObjects: {}
