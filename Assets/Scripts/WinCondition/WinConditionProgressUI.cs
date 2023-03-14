@@ -7,8 +7,9 @@ public class WinConditionProgressUI : MonoBehaviour
 {
     [SerializeField] private int minimum;
     [SerializeField] private int maximum;
-    private WinCondition winCondition;
+    [SerializeField] private WinCondition winCondition;
     public Image mask;
+    
 
     private void CurrentFill()
     {
@@ -18,6 +19,10 @@ public class WinConditionProgressUI : MonoBehaviour
         mask.fillAmount = fillAmount;
     }
 
+    private void Update()
+    {
+        CurrentFill();
+    }
 
 
 
