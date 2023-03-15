@@ -13,6 +13,7 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 
     private Renderer rend;
     public Material matGrid, matDefault;
+    
 
     void Update()
     {
@@ -30,6 +31,7 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
