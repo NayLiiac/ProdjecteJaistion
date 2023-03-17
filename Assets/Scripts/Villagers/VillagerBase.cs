@@ -58,10 +58,17 @@ public abstract class VillagerBase : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
+    //Ages the villager
+    public void Age()
+    {
+
+    }
+
     //Kill the villager (you monster)
     public void Die()
     {
-        Destroy(this);
+        Destroy(this.gameObject);
+
     }
 
     public enum Work
