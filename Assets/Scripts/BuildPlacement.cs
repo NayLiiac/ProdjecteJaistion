@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
-public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/watch?v=ImiyFWZkMAA 
+public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/watch?v=ImiyFWZkMAA pour le placement du build et l'apparition de la grille
 {
     public GameObject BuildToPlace;
     public GameObject BuildToMove;
@@ -12,9 +13,14 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     public Vector3 MousePos;
 
     private Renderer rend;
-    public Material matGrid, matDefault;
-    
+    public Material matGrid, matDefault, collisionBuild;
 
+    public bool buildCollision = false;
+
+     void Start ()
+    {
+        
+    }
     void Update()
     {
         MousePos = Input.mousePosition;
@@ -28,10 +34,25 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 
             BuildToMove.transform.position = new Vector3(Posx, LastPosY, Posz);
         }
-        if(Input.GetMouseButtonDown(0))
+
+        if (!buildCollision)
         {
-            Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
+
+        if (buildCollision)
+        {
+            BuildToMove.GetComponent<MeshRenderer>().material = collisionBuild;
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision");
+
+        buildCollision = true;
     }
 }
