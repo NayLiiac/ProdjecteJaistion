@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -8,51 +9,79 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 {
     public GameObject BuildToPlace;
     public GameObject BuildToMove;
+    public GameObject Grid;
+    public GameObject Build;
+
     public LayerMask mask;
     public float LastPosY;
     public Vector3 MousePos;
 
-    private Renderer rend;
-    public Material matGrid, matDefault, collisionBuild;
-
+    public bool selectBuild = false;
     public bool buildCollision = false;
 
-     void Start ()
+    private Renderer rend;
+    public Material matGrid, matDefault, collisionBuild, buildDefault;
+
+    void Start()
     {
-        
+        rend = GameObject.Find("Ground").GetComponent<Renderer>();
+    }
+    public void BuildPlace(GameObject buildPlace)
+    {
+        BuildToPlace = buildPlace;
+    }
+    public void BuildMove(GameObject buildMove)
+    {
+        BuildToMove = buildMove;
+        selectBuild = true;
     }
     void Update()
     {
-        MousePos = Input.mousePosition;
-        Ray ray = Camera.main.ScreenPointToRay(MousePos);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
+        if (selectBuild)
         {
-            int Posx = (int)Mathf.Round(hit.point.x);
-            int Posz = (int)Mathf.Round(hit.point.z);
+            Grid.SetActive(true);
 
-            BuildToMove.transform.position = new Vector3(Posx, LastPosY, Posz);
-        }
+            MousePos = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(MousePos);
+            RaycastHit hit;
 
-        if (!buildCollision)
-        {
-            if (Input.GetMouseButtonDown(0))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask))
             {
-                Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                int PosX = (int)Mathf.Round(hit.point.x);
+                int PosZ = (int)Mathf.Round(hit.point.z);
+
+                BuildToMove.transform.position = new Vector3(PosX, LastPosY, PosZ);
+
+                if (buildCollision)
+                {
+                    Debug.Log("collision");
+                    Build.GetComponent<MeshRenderer>().material = collisionBuild;
+                }
+            }
+
+            if (!buildCollision)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log("Placé");
+                    Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
+                    Grid.SetActive(false);
+                    selectBuild = false;
+                }
             }
         }
-
-        if (buildCollision)
-        {
-            BuildToMove.GetComponent<MeshRenderer>().material = collisionBuild;
-        }
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
+        Debug.Log("collisionTrue");
 
         buildCollision = true;
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("collisionfalse");
+        Build.GetComponent<MeshRenderer>().material = buildDefault;
+        buildCollision = false;
     }
 }
