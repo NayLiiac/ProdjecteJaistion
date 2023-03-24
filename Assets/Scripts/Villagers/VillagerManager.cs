@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class VillagerManager : MonoBehaviour
@@ -30,19 +28,24 @@ public class VillagerManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void AddVillager(VillagerBase villager)
     {
         villagerList.Add(villager);
     }
+
+    //public void KillVillager(VillagerBase villager)
+    //{
+    //    villager.Die();
+    //}
 
     public void DayTime()
     {
@@ -51,13 +54,34 @@ public class VillagerManager : MonoBehaviour
         {
             villager.WakeUp();
         }
-
     }
 
     public void NightTime()
     {
         //List of villager to remove once the while is over
         List<VillagerBase> thoseToRemove = new List<VillagerBase>();
+
+        //Age the villagers and kills them if they're too old
+        foreach (VillagerBase villager in villagerList)
+        {
+            villager.Age();
+
+            if (villager.age > villager.deathAge)
+            {
+                villager.Die();
+                thoseToRemove.Add(villager);
+            }
+        }
+
+        //Removes the killed villagers from the list
+        foreach (VillagerBase villager in thoseToRemove)
+        {
+            villagerList.Remove(villager);
+        }
+
+
+        //Resets The List
+        thoseToRemove = new List<VillagerBase>();
         int whileBreaker = 0;
 
         //Kills villagers if there isn't enough food
@@ -67,7 +91,7 @@ public class VillagerManager : MonoBehaviour
             villagerToDie.Die();
             thoseToRemove.Add(villagerToDie);
             Debug.Log("InWhile");
-            whileBreaker ++;
+            whileBreaker++;
         }
         Debug.Log("OutWhile. whileBreaker = " + whileBreaker);
 
