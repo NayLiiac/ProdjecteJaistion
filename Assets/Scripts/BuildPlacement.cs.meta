@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9b3985c37ebe5424abbbddb38e899bf4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BuildToPlace: {instanceID: 0}
+  - BuildToMove: {instanceID: 0}
+  - Grid: {instanceID: 0}
+  - Build: {instanceID: 0}
+  - matGrid: {instanceID: 0}
+  - matDefault: {instanceID: 0}
+  - collisionBuild: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
