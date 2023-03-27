@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class VillagerBase : MonoBehaviour
 {
     public int age = 0;
     public int deathAge = 10;
-    public bool tired = false;
+    public bool tired = false; 
+
+    public NavMeshAgent agent;
 
     //public Work workClass = Work.Nothing;
     public virtual Work workClass => Work.Nothing;
 
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
-        
+        //agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -25,19 +29,34 @@ public abstract class VillagerBase : MonoBehaviour
     }
 
     //Has the villager go to the location of its work
-    public void GoToWork(Vector2 WorkPosition)
+    public void GoToWork(Transform WorkPosition)
     {
-
+        if (agent != null)
+        {
+            agent.destination = WorkPosition.position;
+        }
+        else
+        {
+            Debug.LogError("ERROR : VillagerBase : GoToWork : agent is null");
+        }
     }
 
     //Has the villager go to a house to sleep in
-    public void GoToSleep(Vector2 HousePosition)
+    public void GoToSleep(Transform HousePosition)
     {
+        if (agent != null)
+        {
+            agent.destination = HousePosition.position;
+        }
+        else
+        {
+            Debug.LogError("ERROR : VillagerBase : GoToSleep : agent is null");
+        }
 
 
         this.tired = false;
 
-        Sleep();
+        //Sleep();
     }
 
     //Has the villager wander in the village
@@ -62,8 +81,6 @@ public abstract class VillagerBase : MonoBehaviour
     public void Age()
     {
         this.age += 1;
-        
-        
     }
 
     //Kill the villager (you monster)

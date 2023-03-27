@@ -9,10 +9,13 @@ public class VillagerManager : MonoBehaviour
     public int foodquantity = 10;
 
     public List<VillagerBase> villagerList = new List<VillagerBase>();
-    //Building Manager here
+    public List<GameObject> houseList = new List<GameObject>();
 
+    public Transform forest;
+    public Transform farm;
+    public Transform mine;
+    public Transform wanderingPlace;
 
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class VillagerManager : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
 
@@ -42,6 +46,11 @@ public class VillagerManager : MonoBehaviour
         villagerList.Add(villager);
     }
 
+    public void AddHouse(GameObject house)
+    {
+        houseList.Add(house);
+    }
+
     //public void KillVillager(VillagerBase villager)
     //{
     //    villager.Die();
@@ -53,6 +62,22 @@ public class VillagerManager : MonoBehaviour
         foreach (VillagerBase villager in villagerList)
         {
             villager.WakeUp();
+
+            if (villager.workClass == VillagerBase.Work.Lumberjack)
+            {
+                //Debug.Log("Lumberjack goes to work");
+                villager.GoToWork(this.forest);
+            }
+            else if (villager.workClass == VillagerBase.Work.Farmer)
+            {
+                //Debug.Log("Farmer goes to work");
+                villager.GoToWork(this.farm);
+            }
+            else if (villager.workClass == VillagerBase.Work.Miner)
+            {
+                //Debug.Log("Miner goes to work");
+                villager.GoToWork(this.mine);
+            }
         }
     }
 
@@ -105,9 +130,29 @@ public class VillagerManager : MonoBehaviour
         foodquantity -= villagerList.Count;
 
 
-        //Asks building manager for a list of houses
+        int villagerIndex = 0;
         //Have a foreach that checks the buildings that are houses and assign them to a random villager
-        //Assign houses to villagers
+
+        foreach (GameObject house in houseList)
+        {
+            if (villagerIndex < villagerList.Count)
+            {
+                villagerList[villagerIndex].GoToSleep(house.transform);
+                villagerIndex++;
+            }
+        }
+
+        List<GameObject> availableHouses = houseList;
+
+        foreach (VillagerBase villager in villagerList)
+        {
+            if (availableHouses.Count > 1)
+            {
+                GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];
+                villager.GoToSleep(randomHouse.transform);
+                availableHouses.Remove(randomHouse);
+            }
+        }
         //Have the villager sleep in the house
 
 
@@ -115,4 +160,35 @@ public class VillagerManager : MonoBehaviour
 
 
     }
+
+    public int GetBuilderNumber()
+    {
+        int builderNumber = 0;
+
+        foreach (VillagerBase villager in villagerList)
+        {
+            if (villager.workClass == VillagerBase.Work.Builder)
+            {
+                builderNumber++;
+            }
+        }
+
+        return builderNumber;
+    }
+
+    public int GetTiredNumber()
+    {
+        int tiredNumber = 0;
+
+        foreach (VillagerBase villager in villagerList)
+        {
+            if (villager.tired == true)
+            {
+                tiredNumber++;
+            }
+        }
+
+        return tiredNumber;
+    }
+
 }
