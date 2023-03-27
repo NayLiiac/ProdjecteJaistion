@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1960172286092370500}
   - component: {fileID: 2131849542069991624}
+  - component: {fileID: 1183785477}
   m_Layer: 0
   m_Name: LoseCondition
   m_TagString: Untagged
@@ -44,4 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7b1c10409bdd646a3654346fc75624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
+  Manager: {fileID: 1183785477}
+--- !u!114 &1183785477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131774428475786857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87fad7d008aa0341ad3b7e54ec0d612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodquantity: 10
+  villagerList: []

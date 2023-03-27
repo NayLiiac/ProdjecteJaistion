@@ -92,6 +92,9 @@ MonoBehaviour:
   timeOfDay: 8
   cycleLength: 24
   speed: {fileID: 1046018009524930640}
+  isNightTime: 0
+  morning: 8
+  night: 20
 --- !u!1 &1046018008777332940
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7485578a8f071024f841f9daaf7bb10a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: {fileID: 1046018008530208809}
   isTimeTwo: 0
 --- !u!1 &1046018009560948451
 GameObject:
