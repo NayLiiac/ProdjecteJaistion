@@ -9,10 +9,13 @@ public class VillagerManager : MonoBehaviour
     public int foodquantity = 10;
 
     public List<VillagerBase> villagerList = new List<VillagerBase>();
-    //Building Manager here
+    public List<GameObject> houseList = new List<GameObject>();
 
+    public Transform forest;
+    public Transform farm;
+    public Transform mine;
+    public Transform wanderingPlace;
 
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class VillagerManager : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
 
@@ -42,10 +46,10 @@ public class VillagerManager : MonoBehaviour
         villagerList.Add(villager);
     }
 
-    //public void KillVillager(VillagerBase villager)
-    //{
-    //    villager.Die();
-    //}
+    public void AddHouse(GameObject house)
+    {
+        houseList.Add(house);
+    }
 
     public void DayTime()
     {
@@ -53,6 +57,27 @@ public class VillagerManager : MonoBehaviour
         foreach (VillagerBase villager in villagerList)
         {
             villager.WakeUp();
+
+            if (villager.tired == false)        //If villager isn't tired
+            {
+                if (villager.workClass == VillagerBase.Work.Lumberjack)
+                {
+                    //Debug.Log("Lumberjack goes to work");
+                    villager.GoToWork(this.forest);
+                }
+                else if (villager.workClass == VillagerBase.Work.Farmer)
+                {
+                    //Debug.Log("Farmer goes to work");
+                    villager.GoToWork(this.farm);
+                }
+                else if (villager.workClass == VillagerBase.Work.Miner)
+                {
+                    //Debug.Log("Miner goes to work");
+                    villager.GoToWork(this.mine);
+                }
+
+                villager.tired = true;
+            }
         }
     }
 
@@ -104,15 +129,59 @@ public class VillagerManager : MonoBehaviour
         //Stays positive or equal to 0 because of the while just above
         foodquantity -= villagerList.Count;
 
+        //Gives houses to villagers
+        List<GameObject> availableHouses = new();   //Not making a direct reference here
+        availableHouses.AddRange(houseList);
 
-        //Asks building manager for a list of houses
-        //Have a foreach that checks the buildings that are houses and assign them to a random villager
-        //Assign houses to villagers
-        //Have the villager sleep in the house
+        List<VillagerBase> tmpVillagerList = new();
+        tmpVillagerList.AddRange(villagerList);
 
+        for(int i = 0; i < villagerList.Count; i++)
+        {
+            VillagerBase tmpVillager = tmpVillagerList[Random.Range(0, tmpVillagerList.Count)];     //Choose a random villager from tmp list
 
-        //if some villagers didn't get houses, they wander
-
-
+            if (availableHouses.Count > 0)                                                          //If there's an available house
+            {
+                GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];   //Choose a random house
+                tmpVillager.GoToSleep(randomHouse.transform);                                       //Have the villager sleep in the house
+                availableHouses.Remove(randomHouse);                                                //Make the house unavailable
+            }
+            else
+            {
+                tmpVillager.Wander(wanderingPlace);                                                 //Have the villager wander if no house (No House? *Megamind Stare*)
+            }
+            tmpVillagerList.Remove(tmpVillager);                                                    //Removes villager from tmp list
+        }
     }
+
+    public int GetBuilderNumber()
+    {
+        int builderNumber = 0;
+
+        foreach (VillagerBase villager in villagerList)
+        {
+            if (villager.workClass == VillagerBase.Work.Builder)
+            {
+                builderNumber++;
+            }
+        }
+
+        return builderNumber;
+    }
+
+    public int GetTiredNumber()
+    {
+        int tiredNumber = 0;
+
+        foreach (VillagerBase villager in villagerList)
+        {
+            if (villager.tired == true)
+            {
+                tiredNumber++;
+            }
+        }
+
+        return tiredNumber;
+    }
+
 }
