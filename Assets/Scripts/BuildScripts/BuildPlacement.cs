@@ -73,7 +73,7 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
             if (!buildCollision)
             {
                 
-                if (Input.GetMouseButtonDown(1) && Wood.WoodPickedUp >= WoodRequired && Stone.StonePickedUp >= StoneRequired) // && VillagerManager.instance.GetBuilderNumber() >= BuilderRequired)
+                if (Input.GetMouseButtonDown(1) && Wood.WoodPickedUp >= WoodRequired && Stone.StonePickedUp >= StoneRequired && VillagerManager.instance.GetBuilderNumber() >= BuilderRequired)
                 {
                     Debug.Log("Placé");
                     Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
