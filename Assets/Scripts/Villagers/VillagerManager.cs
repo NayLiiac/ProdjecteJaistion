@@ -51,11 +51,6 @@ public class VillagerManager : MonoBehaviour
         houseList.Add(house);
     }
 
-    //public void KillVillager(VillagerBase villager)
-    //{
-    //    villager.Die();
-    //}
-
     public void DayTime()
     {
         //Wakes Up villagers
@@ -63,20 +58,25 @@ public class VillagerManager : MonoBehaviour
         {
             villager.WakeUp();
 
-            if (villager.workClass == VillagerBase.Work.Lumberjack)
+            if (villager.tired == false)        //If villager isn't tired
             {
-                //Debug.Log("Lumberjack goes to work");
-                villager.GoToWork(this.forest);
-            }
-            else if (villager.workClass == VillagerBase.Work.Farmer)
-            {
-                //Debug.Log("Farmer goes to work");
-                villager.GoToWork(this.farm);
-            }
-            else if (villager.workClass == VillagerBase.Work.Miner)
-            {
-                //Debug.Log("Miner goes to work");
-                villager.GoToWork(this.mine);
+                if (villager.workClass == VillagerBase.Work.Lumberjack)
+                {
+                    //Debug.Log("Lumberjack goes to work");
+                    villager.GoToWork(this.forest);
+                }
+                else if (villager.workClass == VillagerBase.Work.Farmer)
+                {
+                    //Debug.Log("Farmer goes to work");
+                    villager.GoToWork(this.farm);
+                }
+                else if (villager.workClass == VillagerBase.Work.Miner)
+                {
+                    //Debug.Log("Miner goes to work");
+                    villager.GoToWork(this.mine);
+                }
+
+                villager.tired = true;
             }
         }
     }
@@ -129,36 +129,29 @@ public class VillagerManager : MonoBehaviour
         //Stays positive or equal to 0 because of the while just above
         foodquantity -= villagerList.Count;
 
+        //Gives houses to villagers
+        List<GameObject> availableHouses = new();   //Not making a direct reference here
+        availableHouses.AddRange(houseList);
 
-        int villagerIndex = 0;
-        //Have a foreach that checks the buildings that are houses and assign them to a random villager
+        List<VillagerBase> tmpVillagerList = new();
+        tmpVillagerList.AddRange(villagerList);
 
-        foreach (GameObject house in houseList)
+        for(int i = 0; i < villagerList.Count; i++)
         {
-            if (villagerIndex < villagerList.Count)
+            VillagerBase tmpVillager = tmpVillagerList[Random.Range(0, tmpVillagerList.Count)];     //Choose a random villager from tmp list
+
+            if (availableHouses.Count > 0)                                                          //If there's an available house
             {
-                villagerList[villagerIndex].GoToSleep(house.transform);
-                villagerIndex++;
+                GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];   //Choose a random house
+                tmpVillager.GoToSleep(randomHouse.transform);                                       //Have the villager sleep in the house
+                availableHouses.Remove(randomHouse);                                                //Make the house unavailable
             }
-        }
-
-        List<GameObject> availableHouses = houseList;
-
-        foreach (VillagerBase villager in villagerList)
-        {
-            if (availableHouses.Count > 1)
+            else
             {
-                GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];
-                villager.GoToSleep(randomHouse.transform);
-                availableHouses.Remove(randomHouse);
+                tmpVillager.Wander(wanderingPlace);                                                 //Have the villager wander if no house (No House? *Megamind Stare*)
             }
+            tmpVillagerList.Remove(tmpVillager);                                                    //Removes villager from tmp list
         }
-        //Have the villager sleep in the house
-
-
-        //if some villagers didn't get houses, they wander
-
-
     }
 
     public int GetBuilderNumber()

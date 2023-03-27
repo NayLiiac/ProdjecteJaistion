@@ -53,16 +53,25 @@ public abstract class VillagerBase : MonoBehaviour
             Debug.LogError("ERROR : VillagerBase : GoToSleep : agent is null");
         }
 
-
         this.tired = false;
+        Debug.Log($"villager now not tired {tired}");
 
         //Sleep();
     }
 
     //Has the villager wander in the village
-    public void Wander()
+    public void Wander(Transform VillagePosition)
     {
+        if (agent != null)
+        {
+            agent.destination = VillagePosition.position;
+        }
+        else
+        {
+            Debug.LogError("ERROR : VillagerBase : Wander : agent is null");
+        }
 
+        Debug.Log($"villager now still tired {tired}");
     }
 
     //Deactivates the villager upon entering a house
