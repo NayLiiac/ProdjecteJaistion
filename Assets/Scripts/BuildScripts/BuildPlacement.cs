@@ -22,10 +22,15 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     private Renderer rend;
     public Material matGrid, matDefault, collisionBuild, buildDefault;
 
-    void Start()
-    {
-        rend = GameObject.Find("Ground").GetComponent<Renderer>();
-    }
+    // Récupérer les matériaux collectés par le joueur
+    public GetWoodRessource Wood;
+    public GetStoneRessource Stone;
+
+    // Récupère les matériaux requis
+    public int BuilderRequired;
+    public int WoodRequired;
+    public int StoneRequired;
+
     public void BuildPlace(GameObject buildPlace)
     {
         BuildToPlace = buildPlace;
@@ -34,6 +39,12 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     {
         BuildToMove = buildMove;
         selectBuild = true;
+        gameObject.SetActive(true);
+
+    }
+    void Start()
+    {
+        gameObject.SetActive(false);
     }
     void Update()
     {
@@ -54,33 +65,38 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 
                 if (buildCollision)
                 {
-                    Debug.Log("collision");
+                    
                     Build.GetComponent<MeshRenderer>().material = collisionBuild;
                 }
             }
 
             if (!buildCollision)
             {
-                if (Input.GetMouseButtonDown(0))
+                
+                if (Input.GetMouseButtonDown(1) && Wood.WoodPickedUp >= WoodRequired && Stone.StonePickedUp >= StoneRequired) // && VillagerManager.instance.GetBuilderNumber() >= BuilderRequired)
                 {
                     Debug.Log("Placé");
                     Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
                     Grid.SetActive(false);
                     selectBuild = false;
+
+                    //Retrait des ressources 
+                    Wood.WoodPickedUp -= WoodRequired;
+                    Stone.StonePickedUp -= StoneRequired;
+                    gameObject.SetActive(false);
+
                 }
             }
         }
     }
-
+    // Éviter la superposition des bâtiments
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collisionTrue");
 
         buildCollision = true;
     }
     void OnCollisionExit(Collision collision)
     {
-        Debug.Log("collisionfalse");
         Build.GetComponent<MeshRenderer>().material = buildDefault;
         buildCollision = false;
     }
