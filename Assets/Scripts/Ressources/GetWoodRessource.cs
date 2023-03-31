@@ -5,34 +5,42 @@ using UnityEngine;
 public class GetWoodRessource : MonoBehaviour
 {
     public int WoodPickedUp = 0;
-    public int waitResource = 3;
+    public int waitResource = 3; 
     public bool startHarvest;
 
     void Update()
     {
         if (startHarvest)
         {
-            RecupResource();
+            PickedUpResource();
             startHarvest = false;
         }
     }
-    void RecupResource()
+
+    //PickedUpResource and start coroutine for wait
+    void PickedUpResource()
     {
         WoodPickedUp++;
         StartCoroutine(WaitResource());
     }
+
+    //a villager enters the area
     void OnTriggerEnter(Collider collision)
     {
-        startHarvest = true;
+        startHarvest = true; 
     }
-    void OnTriggerExit(Collider collision)
+
+    //stop the coroutine when the villager is out the area
+    void OnTriggerExit(Collider collision) 
     {
         startHarvest = false;
-        StopCoroutine(WaitResource());
+        StopCoroutine(WaitResource()); 
     }
+
+    //wait time for retrieve a new resource
     IEnumerator WaitResource()
     {
-        yield return new WaitForSeconds(waitResource);
-        RecupResource();
+        yield return new WaitForSeconds(waitResource); 
+        PickedUpResource(); 
     }
 }
