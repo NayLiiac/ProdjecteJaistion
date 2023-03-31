@@ -11,7 +11,7 @@ public class SpawnVillagers : MonoBehaviour
     public void VillagersSpawn()
     {
 
-        Instantiate(spawnVillagersPrefab);
+        GameObject Instance = Instantiate(spawnVillagersPrefab);
 
     }
 
