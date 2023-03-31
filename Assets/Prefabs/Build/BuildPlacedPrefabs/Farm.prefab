@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 4791278272122330054}
   - component: {fileID: 4791278272122330055}
   - component: {fileID: 4791278272122330052}
-  - component: {fileID: 4861661709622714728}
   m_Layer: 0
-  m_Name: Library
+  m_Name: Farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21ab75ed2b38e8543b2752a270e8ee5f, type: 2}
+  - {fileID: 2100000, guid: 6eaa2f3a00b4424499bda89c3149622e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,30 +97,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4861661709622714728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791278272122330053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3985c37ebe5424abbbddb38e899bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BuildToPlace: {fileID: 0}
-  BuildToMove: {fileID: 0}
-  Grid: {fileID: 0}
-  Build: {fileID: 743143664439516222, guid: cdf650740fa81af41a5b302303159f70, type: 3}
-  mask:
-    serializedVersion: 2
-    m_Bits: 64
-  LastPosY: 0.5
-  MousePos: {x: 0, y: 0, z: 0}
-  selectBuild: 0
-  buildCollision: 0
-  matGrid: {fileID: 2100000, guid: e1969c0d7a38f0e40bb79d6d5c14552a, type: 2}
-  matDefault: {fileID: 2100000, guid: 11514015b7e2851419291c47f06bc19b, type: 2}
-  collisionBuild: {fileID: 2100000, guid: 4a0cf3cd627dea24ab0d3a25a91e777b, type: 2}
-  buildDefault: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
