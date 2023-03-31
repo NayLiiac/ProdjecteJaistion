@@ -696,6 +696,10 @@ PrefabInstance:
       propertyPath: time
       value: 
       objectReference: {fileID: 1517807946}
+    - target: {fileID: 802096208048280811, guid: 241b9d0c8837efb43aa8770ef9814117, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 42
+      objectReference: {fileID: 0}
     - target: {fileID: 802096208369726009, guid: 241b9d0c8837efb43aa8770ef9814117, type: 3}
       propertyPath: winCondition
       value: 

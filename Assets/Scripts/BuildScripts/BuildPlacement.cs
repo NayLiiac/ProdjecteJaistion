@@ -12,6 +12,8 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     public GameObject Grid;
     public GameObject Build;
 
+    public WinCondition winCondition;
+
     public LayerMask mask;
     public float LastPosY;
     public Vector3 MousePos;
@@ -80,6 +82,9 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
                     Grid.SetActive(false);
                     selectBuild = false;
 
+                    //Effet des bâtiments
+                    BuildingEffect();
+
                     //Retrait des ressources 
                     Wood.WoodPickedUp -= WoodRequired;
                     Stone.StonePickedUp -= StoneRequired;
@@ -100,4 +105,18 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
         Build.GetComponent<MeshRenderer>().material = buildDefault;
         buildCollision = false;
     }
+
+    private void BuildingEffect()
+    {
+        if (Build.tag == "Librarie")
+        {
+            winCondition.progressionWinCondition += 1;
+        }
+
+        if (Build.tag == "Musée")
+        {
+            winCondition.progressionWinCondition += 2;
+        }
+    }
+
 }
