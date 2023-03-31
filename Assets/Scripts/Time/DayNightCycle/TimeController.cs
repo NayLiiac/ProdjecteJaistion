@@ -12,6 +12,8 @@ public class TimeController : MonoBehaviour
     public int morning = 8;
     public int night = 20;
 
+    public SpawnVillagers spawnVillager;
+
     private void Update()
     {
         if (timeOfDay < morning || timeOfDay > night)
@@ -23,7 +25,15 @@ public class TimeController : MonoBehaviour
             isNightTime= false;
         }
 
+        if (timeOfDay > 7.9 && timeOfDay < 8.1)
+        {
+
+            spawnVillager.VillagersSpawn();
+
+        }
     }
+
+
 
     private void UpdateTimeOne()
     {
