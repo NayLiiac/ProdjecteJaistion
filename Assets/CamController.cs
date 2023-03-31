@@ -19,8 +19,8 @@ public class CamController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Mouse X : " + Input.mousePosition.x);
-        Debug.Log("Mouse Y : " + Input.mousePosition.z);
+        // Debug.Log("Mouse X : " + Input.mousePosition.x);
+        // Debug.Log("Mouse Y : " + Input.mousePosition.z);
         
         if (Input.GetMouseButton(0))
         {
