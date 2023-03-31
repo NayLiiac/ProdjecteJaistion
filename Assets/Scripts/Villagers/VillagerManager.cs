@@ -16,6 +16,8 @@ public class VillagerManager : MonoBehaviour
     public Transform mine;
     public Transform wanderingPlace;
 
+    Ray ray; 
+    RaycastHit hit;
 
     private void Awake()
     {
@@ -32,13 +34,21 @@ public class VillagerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Debug.Log(hit.transform.name);
+                Debug.Log("hit");
+            }
+        }
     }
 
     public void AddVillager(VillagerBase villager)
