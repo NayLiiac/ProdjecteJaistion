@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Villager
+  - Farm
+  - Museum
+  - Bookshop
   layers:
   - Default
   - TransparentFX

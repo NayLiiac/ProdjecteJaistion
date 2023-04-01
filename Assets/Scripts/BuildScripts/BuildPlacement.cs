@@ -108,12 +108,12 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 
     private void BuildingEffect()
     {
-        if (Build.tag == "Librarie")
+        if (Build.tag == "Bookshop")
         {
             winCondition.progressionWinCondition += 1;
         }
 
-        if (Build.tag == "Musée")
+        if (Build.tag == "Museum")
         {
             winCondition.progressionWinCondition += 2;
         }
