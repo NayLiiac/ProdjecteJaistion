@@ -59,6 +59,19 @@ public abstract class VillagerBase : MonoBehaviour
         //Sleep();
     }
 
+    public void GoToSchool(Transform SchoolPosition, Work newWork)
+    {
+        if (agent != null)
+        {
+            agent.destination = SchoolPosition.position;
+            Debug.Log($"{workClass} is now a {newWork}");
+        }
+        else
+        {
+            Debug.LogError("ERROR : VillagerBase : GoToShool : agent is null");
+        }
+    }
+
     //Has the villager wander in the village
     public void Wander(Transform VillagePosition)
     {

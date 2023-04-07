@@ -7,6 +7,7 @@ public class VillagerManager : MonoBehaviour
     public static VillagerManager instance;
 
     public int foodquantity = 10;
+    public Canvas villagerViewer;
 
     public List<VillagerBase> villagerList = new List<VillagerBase>();
     public List<GameObject> houseList = new List<GameObject>();
@@ -15,10 +16,15 @@ public class VillagerManager : MonoBehaviour
     public Transform farm;
     public Transform mine;
     public Transform wanderingPlace;
+    public Transform school;
+
+    [SerializeField]
+    private VillagerBase selectedVillager;
 
     Ray ray; 
     RaycastHit hit;
 
+    //Makes a single instance
     private void Awake()
     {
         if (instance != null)
@@ -34,7 +40,7 @@ public class VillagerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        villagerViewer.enabled = false;
     }
 
     // Update is called once per frame
@@ -45,22 +51,47 @@ public class VillagerManager : MonoBehaviour
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100))
             {
-                Debug.Log(hit.transform.name);
-                Debug.Log("hit");
+                if (hit.transform.gameObject.tag == "Villager")
+                {
+                    selectedVillager = hit.transform.gameObject.GetComponent<VillagerBase>();
+                    villagerViewer.enabled = true;
+                    Debug.Log(hit.transform.gameObject.tag);
+                }
+                else
+                {
+                    selectedVillager = null;
+                    villagerViewer.enabled = false;
+                }
             }
         }
     }
 
+    //Adds a villager to the list
     public void AddVillager(VillagerBase villager)
     {
         villagerList.Add(villager);
     }
 
+    //Adds a house to the list
     public void AddHouse(GameObject house)
     {
         houseList.Add(house);
     }
 
+    //
+    public void ReformVillager(int workNumber)
+    {
+        if (selectedVillager != null)
+        {
+            selectedVillager.GoToSchool(school, (VillagerBase.Work)workNumber);
+        }
+        else
+        {
+            Debug.LogError("ERROR : VillagerManager : ReformVillager : selected villager is null");
+        }
+    }
+
+    //Manages Villager Behaviour when days come
     public void DayTime()
     {
         //Wakes Up villagers
@@ -91,6 +122,7 @@ public class VillagerManager : MonoBehaviour
         }
     }
 
+    //Manages Villager Behaviour when night come
     public void NightTime()
     {
         //List of villager to remove once the while is over
@@ -115,8 +147,10 @@ public class VillagerManager : MonoBehaviour
         }
 
 
-        //Resets The List
+        //Resets The List (there are other villagers to kill)
         thoseToRemove = new List<VillagerBase>();
+
+        //Infinite Loop Security
         int whileBreaker = 0;
 
         //Kills villagers if there isn't enough food
@@ -136,17 +170,19 @@ public class VillagerManager : MonoBehaviour
             villagerList.Remove(villager);
         }
 
-        //Stays positive or equal to 0 because of the while just above
+        //Stays positive or equal to 0 because of the while just above (will be modified later down the line)
         foodquantity -= villagerList.Count;
 
-        //Gives houses to villagers
+        
+        //Additionnal lists that can be modified while going through all the houses and villagers
         List<GameObject> availableHouses = new();   //Not making a direct reference here
         availableHouses.AddRange(houseList);
 
         List<VillagerBase> tmpVillagerList = new();
         tmpVillagerList.AddRange(villagerList);
 
-        for(int i = 0; i < villagerList.Count; i++)
+        //Gives random houses to random villagers
+        for (int i = 0; i < villagerList.Count; i++)
         {
             VillagerBase tmpVillager = tmpVillagerList[Random.Range(0, tmpVillagerList.Count)];     //Choose a random villager from tmp list
 
@@ -156,13 +192,14 @@ public class VillagerManager : MonoBehaviour
                 tmpVillager.GoToSleep(randomHouse.transform);                                       //Have the villager sleep in the house
                 availableHouses.Remove(randomHouse);                                                //Make the house unavailable
             }
-            else
-            {
-                tmpVillager.Wander(wanderingPlace);                                                 //Have the villager wander if no house (No House? *Megamind Stare*)
+            else                                                                                    //If there isn't an available house  (No House? *Megamind Stare*)
+            {   
+                tmpVillager.Wander(wanderingPlace);                                                 //Have the villager wander
             }
-            tmpVillagerList.Remove(tmpVillager);                                                    //Removes villager from tmp list
+            tmpVillagerList.Remove(tmpVillager);                                                    //Removes villager from tmp list (to not have it again)
         }
     }
+
 
     public int GetBuilderNumber()
     {
