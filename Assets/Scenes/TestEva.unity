@@ -2943,6 +2943,10 @@ PrefabInstance:
       value: Ressources
       objectReference: {fileID: 0}
     - target: {fileID: 8814063392472990269, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: build
+      value: 
+      objectReference: {fileID: 5042415298248775358}
+    - target: {fileID: 8814063392472990269, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
       propertyPath: GetFoodRessource
       value: 
       objectReference: {fileID: 1250132655}
