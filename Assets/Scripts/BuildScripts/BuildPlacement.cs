@@ -20,6 +20,7 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 
     public bool selectBuild = false;
     public bool buildCollision = false;
+    public bool isFarmBuilt = false;
 
     private Renderer rend;
     public Material matGrid, matDefault, collisionBuild, buildDefault;
@@ -110,17 +111,17 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     {
         if (Build.tag == "Bookshop")
         {
-            winCondition.progressionWinCondition += 1;
+            winCondition.progressionWinCondition += 10;
         }
 
         if (Build.tag == "Museum")
         {
-            winCondition.progressionWinCondition += 2;
+            winCondition.progressionWinCondition += 25;
         }
 
-        if(Build.tag == "Farm")
+        if (Build.tag == "Farm")
         {
-
+            isFarmBuilt = true;
         }
     }
 
