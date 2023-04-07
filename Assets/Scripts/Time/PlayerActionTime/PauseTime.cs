@@ -6,6 +6,7 @@ public class PauseTime : MonoBehaviour
 {
     public bool isPaused = false;
 
+    //Ce script sert à mettre le jeu en pause
     private void TogglePause()
     {
         if (isPaused)
@@ -18,6 +19,8 @@ public class PauseTime : MonoBehaviour
             Resume();
         }
     }
+
+    //Pour cela, on définit simplement si le temps passe ou pas
 
     private void Pause()
     {
@@ -33,6 +36,7 @@ public class PauseTime : MonoBehaviour
         
     }
 
+    //Le temps ou la pause est définie selon si le joueur lance la pause avec la touche escape
 
     private void Update()
     {
