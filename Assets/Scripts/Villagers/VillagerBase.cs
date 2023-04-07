@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public abstract class VillagerBase : MonoBehaviour
 {
     public int age = 0;
     public int deathAge = 10;
-    public bool tired = false; 
 
     public NavMeshAgent agent;
 
-    //public Work workClass = Work.Nothing;
+    public bool getsTired = false;
+    public bool tired = false;
+    public bool goesToHouse = false;
+    public bool goesToSchool = false;
+
+    
+    private const double destinationReachedTreshold = 1.8;
+    private Vector3 agentTarget;
+    private float distanceToTarget;
+
+    private Work futurework = Work.Nothing;
+
     public virtual Work workClass => Work.Nothing;
 
     // Start is called before the first frame update
@@ -25,7 +36,26 @@ public abstract class VillagerBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        distanceToTarget = Vector3.Distance(transform.position, agentTarget);
+        //Debug.Log($"treshold : {destinationReachedTreshold}, distance : {distanceToTarget}");
+        if (distanceToTarget < destinationReachedTreshold)
+        {
+            print("Destination reached");
+            if (goesToHouse)
+            {
+                Sleep();
+                this.tired = false;
+                goesToHouse = false;
+
+                Debug.Log($"villager now not tired {tired}");
+            }
+            if (goesToSchool)
+            {
+                goesToSchool = false;
+                Debug.Log($"villager is learning");
+                LearnNewJob();
+            }
+        }
     }
 
     //Has the villager go to the location of its work
@@ -33,7 +63,9 @@ public abstract class VillagerBase : MonoBehaviour
     {
         if (agent != null)
         {
-            agent.destination = WorkPosition.position;
+            Debug.Log("IGoToWork");
+            agentTarget = WorkPosition.position;
+            agent.destination = agentTarget;
         }
         else
         {
@@ -46,24 +78,26 @@ public abstract class VillagerBase : MonoBehaviour
     {
         if (agent != null)
         {
-            agent.destination = HousePosition.position;
+            Debug.Log("IGoToSleep");
+            agentTarget = HousePosition.position;
+            agent.destination = agentTarget;
+            goesToHouse = true;
         }
         else
         {
             Debug.LogError("ERROR : VillagerBase : GoToSleep : agent is null");
         }
-
-        this.tired = false;
-        Debug.Log($"villager now not tired {tired}");
-
-        //Sleep();
     }
 
     public void GoToSchool(Transform SchoolPosition, Work newWork)
     {
         if (agent != null)
         {
-            agent.destination = SchoolPosition.position;
+            agentTarget = SchoolPosition.position;
+            agent.destination = agentTarget;
+            goesToSchool = true;
+
+            this.futurework = newWork;
             Debug.Log($"{workClass} is now a {newWork}");
         }
         else
@@ -72,7 +106,7 @@ public abstract class VillagerBase : MonoBehaviour
         }
     }
 
-    //Has the villager wander in the village
+    //Has the villager "wander" in the village
     public void Wander(Transform VillagePosition)
     {
         if (agent != null)
@@ -87,13 +121,64 @@ public abstract class VillagerBase : MonoBehaviour
         Debug.Log($"villager now still tired {tired}");
     }
 
+    public void LearnNewJob()
+    {
+        if (futurework != Work.Nothing)
+        {
+            GameObject newWorker;
+
+            switch (futurework)
+            {
+                case Work.Lumberjack:
+                    newWorker = Instantiate(VillagerManager.instance.lumberjackPrefab, this.transform.position, this.transform.rotation);
+                    newWorker.GetComponent<LumberjackBehaviour>().age = this.age;
+                    newWorker.GetComponent<LumberjackBehaviour>().getsTired = true;
+
+                    VillagerManager.instance.AddVillager(newWorker.GetComponent<LumberjackBehaviour>());
+
+                    VillagerManager.instance.KillVillager(this);
+                    break;
+
+                case Work.Farmer:
+                    newWorker = Instantiate(VillagerManager.instance.farmerPrefab, this.transform.position, this.transform.rotation);
+                    newWorker.GetComponent<FarmerBehaviour>().age = this.age;
+                    newWorker.GetComponent<FarmerBehaviour>().getsTired = true;
+
+                    VillagerManager.instance.AddVillager(newWorker.GetComponent<FarmerBehaviour>());
+
+                    VillagerManager.instance.KillVillager(this);
+                    break;
+
+                case Work.Miner:
+                    newWorker = Instantiate(VillagerManager.instance.minerPrefab, this.transform.position, this.transform.rotation);
+                    newWorker.GetComponent<MinerBehaviour>().age = this.age;
+                    newWorker.GetComponent<MinerBehaviour>().getsTired = true;
+
+                    VillagerManager.instance.AddVillager(newWorker.GetComponent<MinerBehaviour>());
+
+                    VillagerManager.instance.KillVillager(this);
+                    break;
+
+                case Work.Builder:
+                    newWorker = Instantiate(VillagerManager.instance.builderPrefab, this.transform.position, this.transform.rotation);
+                    newWorker.GetComponent<BuilderBehaviour>().age = this.age;
+                    newWorker.GetComponent<BuilderBehaviour>().getsTired = true;
+
+                    VillagerManager.instance.AddVillager(newWorker.GetComponent<BuilderBehaviour>());
+
+                    VillagerManager.instance.KillVillager(this);
+                    break;
+            }
+        }
+    }
+
     //Deactivates the villager upon entering a house
     public void Sleep()
     {
         this.gameObject.SetActive(false);
     }
 
-    //Reactivates the villager upon entering a house
+    //Reactivates the villager upon leaving a house
     public void WakeUp()
     {
         this.gameObject.SetActive(true);

@@ -12,11 +12,18 @@ public class VillagerManager : MonoBehaviour
     public List<VillagerBase> villagerList = new List<VillagerBase>();
     public List<GameObject> houseList = new List<GameObject>();
 
+    //The different locations to go to
     public Transform forest;
     public Transform farm;
     public Transform mine;
     public Transform wanderingPlace;
     public Transform school;
+
+    //The prefabs
+    public GameObject lumberjackPrefab;
+    public GameObject farmerPrefab;
+    public GameObject minerPrefab;
+    public GameObject builderPrefab;
 
     [SerializeField]
     private VillagerBase selectedVillager;
@@ -83,7 +90,15 @@ public class VillagerManager : MonoBehaviour
     {
         if (selectedVillager != null)
         {
-            selectedVillager.GoToSchool(school, (VillagerBase.Work)workNumber);
+            if (selectedVillager.tired == false)
+            {
+                selectedVillager.GoToSchool(school, (VillagerBase.Work)workNumber);
+            }
+            else
+            {
+                Debug.Log("VillagerTooTiredToLearn");
+            }
+            villagerViewer.enabled = false;
         }
         else
         {
@@ -117,7 +132,11 @@ public class VillagerManager : MonoBehaviour
                     villager.GoToWork(this.mine);
                 }
 
-                villager.tired = true;
+                villager.getsTired = true;
+            }
+            else
+            {
+                Debug.Log("VillagerTooTiredToWork");
             }
         }
     }
@@ -181,23 +200,38 @@ public class VillagerManager : MonoBehaviour
         List<VillagerBase> tmpVillagerList = new();
         tmpVillagerList.AddRange(villagerList);
 
-        //Gives random houses to random villagers
+        //Tires the villagers if they worked and gives random houses to random tired villagers
         for (int i = 0; i < villagerList.Count; i++)
         {
             VillagerBase tmpVillager = tmpVillagerList[Random.Range(0, tmpVillagerList.Count)];     //Choose a random villager from tmp list
 
-            if (availableHouses.Count > 0)                                                          //If there's an available house
+            if (tmpVillager.getsTired == true)
             {
-                GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];   //Choose a random house
-                tmpVillager.GoToSleep(randomHouse.transform);                                       //Have the villager sleep in the house
-                availableHouses.Remove(randomHouse);                                                //Make the house unavailable
+                tmpVillager.tired = true;
+                tmpVillager.getsTired = false;
             }
-            else                                                                                    //If there isn't an available house  (No House? *Megamind Stare*)
-            {   
-                tmpVillager.Wander(wanderingPlace);                                                 //Have the villager wander
+
+            if (tmpVillager.tired == true)
+            {
+                if (availableHouses.Count > 0)                                                          //If there's an available house
+                {
+                    GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];   //Choose a random house
+                    tmpVillager.GoToSleep(randomHouse.transform);                                       //Have the villager sleep in the house
+                    availableHouses.Remove(randomHouse);                                                //Make the house unavailable
+                }
+                else                                                                                    //If there isn't an available house  (No House? *Megamind Stare*)
+                {
+                    tmpVillager.Wander(wanderingPlace);                                                 //Have the villager wander
+                }                              
             }
-            tmpVillagerList.Remove(tmpVillager);                                                    //Removes villager from tmp list (to not have it again)
+            tmpVillagerList.Remove(tmpVillager);                                                        //Removes villager from tmp list (to not have it again)
         }
+    }
+
+    public void KillVillager(VillagerBase villager)
+    {
+        villagerList.Remove(villager);
+        villager.Die();
     }
 
 

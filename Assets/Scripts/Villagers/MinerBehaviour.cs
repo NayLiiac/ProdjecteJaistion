@@ -11,10 +11,4 @@ public class MinerBehaviour : VillagerBase
     {
         //agent = GetComponent<NavMeshAgent>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
