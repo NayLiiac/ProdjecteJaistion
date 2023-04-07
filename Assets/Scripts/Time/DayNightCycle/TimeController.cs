@@ -33,6 +33,7 @@ public class TimeController : MonoBehaviour
             spawnVillager.VillagersSpawn();
             villagerHasSpawned= true;
             isNightTime = false;
+            VillagerManager.instance.DayTime();
         }
 
     }
