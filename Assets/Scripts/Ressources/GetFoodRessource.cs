@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GetFoodRessource : MonoBehaviour
 {
-    public int FoodPickedUp = 0;
+    public StockFoodResources StockFoodResources;
+
     public int waitResource = 2;
     public bool startHarvest;
 
@@ -12,17 +13,12 @@ public class GetFoodRessource : MonoBehaviour
     {
         if (startHarvest)
         {
-            RecupResource();
+            StockFoodResources.RecupResource();
             startHarvest = false;
         }
     }
 
-    //PickedUpResource and start coroutine for wait
-    void RecupResource()
-    {
-        FoodPickedUp++;
-        StartCoroutine(WaitResource());
-    }
+   
 
     //a villager enters the area
     void OnTriggerEnter(Collider collision)
@@ -38,9 +34,9 @@ public class GetFoodRessource : MonoBehaviour
     }
 
     //wait time for retrieve a new resource
-    IEnumerator WaitResource()
+    public IEnumerator WaitResource()
     {
         yield return new WaitForSeconds(waitResource);
-        RecupResource();
+        StockFoodResources.RecupResource();
     }
 }

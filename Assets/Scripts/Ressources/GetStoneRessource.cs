@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GetStoneRessource : MonoBehaviour
 {
-    public int StonePickedUp = 0;
+    public StockStoneResources StockStoneResources;
+
     public float waitResource = 4;
     public bool startHarvest;
 
@@ -12,16 +13,9 @@ public class GetStoneRessource : MonoBehaviour
     {
         if (startHarvest)
         {
-            RecupResource();
+            StockStoneResources.RecupResource();
             startHarvest = false;
         }
-    }
-
-    //PickedUpResource and start coroutine for wait
-    void RecupResource()
-    {
-        StonePickedUp++;
-        StartCoroutine(WaitResource());
     }
 
     //a villager enters the area
@@ -38,9 +32,9 @@ public class GetStoneRessource : MonoBehaviour
     }
 
     //wait time for retrieve a new resource
-    IEnumerator WaitResource()
+    public IEnumerator WaitResource()
     {
         yield return new WaitForSeconds(waitResource);
-        RecupResource();
+        StockStoneResources.RecupResource();
     }
 }
