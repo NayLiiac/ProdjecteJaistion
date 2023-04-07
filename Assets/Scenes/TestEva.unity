@@ -712,11 +712,11 @@ PrefabInstance:
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377966}
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377967}
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: BuilderRequired
       value: 0
@@ -2678,11 +2678,11 @@ PrefabInstance:
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377966}
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377967}
     - target: {fileID: 3447750956600566030, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2758,11 +2758,11 @@ PrefabInstance:
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377966}
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377967}
     - target: {fileID: 4306684060099573948, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: m_Name
       value: LibraryBuild
@@ -2838,11 +2838,11 @@ PrefabInstance:
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377966}
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377967}
     - target: {fileID: 7008858552211423975, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2981,11 +2981,11 @@ PrefabInstance:
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377966}
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 313377967}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
 --- !u!114 &8579577857976399938 stripped
