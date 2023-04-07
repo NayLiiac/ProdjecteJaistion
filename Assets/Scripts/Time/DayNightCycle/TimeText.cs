@@ -8,6 +8,7 @@ public class TimeText : MonoBehaviour
     public TimeController time;
     [SerializeField] private TextMeshProUGUI timeText;
 
+    //Ce script sert à afficher l'heure qu'il est dans notre jeu, définie dans le TimeController
     private void Update()
     {
         UpdateTimeText();

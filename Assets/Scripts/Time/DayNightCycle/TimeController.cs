@@ -18,6 +18,8 @@ public class TimeController : MonoBehaviour
     public SpawnVillagers spawnVillager;
     public bool villagerHasSpawned = false;
 
+    //On définit une période de temps qui représente la nuit, et une le jour, et en fonction de cela, on fait spawn un villager au début du jour
+
     private void Update()
     {
 
@@ -39,19 +41,23 @@ public class TimeController : MonoBehaviour
     }
 
 
-
+    /*On crée les méthodes permettant de calculer l'heure qu'il est selon les paramètres définis, ici le cycleLength
+     qui représente la durée d'une journée totale, soit un cycle. Pour trouver l'heure à laquelle cela correspond selon notre cycleLength, 
+    on utilise un modulo*/
     private void UpdateTimeOne()
     {
         timeOfDay = (timeOfDay + Time.deltaTime) % cycleLength;
         roundedTimeOfDay = Mathf.RoundToInt(timeOfDay);
     }
 
+    //Cette deuxième méthode est la même mais fait passer le temps deux fois plus rapidement, par exemple pour passer la nuit plus vite
     private void UpdateTimeTwo()
     {
         timeOfDay = (timeOfDay + Time.deltaTime * 2) % cycleLength;
         roundedTimeOfDay = Mathf.RoundToInt(timeOfDay);
     }
 
+    //Cette fonction définit quelle méthode est utilisée pour le passage du temps, soit en normal soit en *2
     public void UpdateTime()
     {
         if (speed.isTimeTwo)
