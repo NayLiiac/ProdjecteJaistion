@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class VillagerManager : MonoBehaviour
@@ -7,7 +8,9 @@ public class VillagerManager : MonoBehaviour
     public static VillagerManager instance;
 
     public int foodquantity = 10;
-    public Canvas villagerViewer;
+    public GameObject villagerViewer;
+    public TextMeshProUGUI workText;
+    public TextMeshProUGUI ageText;
 
     public List<VillagerBase> villagerList = new List<VillagerBase>();
     public List<GameObject> houseList = new List<GameObject>();
@@ -47,7 +50,7 @@ public class VillagerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        villagerViewer.enabled = false;
+        villagerViewer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,13 +64,15 @@ public class VillagerManager : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Villager")
                 {
                     selectedVillager = hit.transform.gameObject.GetComponent<VillagerBase>();
-                    villagerViewer.enabled = true;
+                    villagerViewer.SetActive(true);
                     Debug.Log(hit.transform.gameObject.tag);
+                    workText.SetText($"{selectedVillager.workClass}");
+                    ageText.SetText($"Age : {selectedVillager.age}");
                 }
                 else
                 {
                     selectedVillager = null;
-                    villagerViewer.enabled = false;
+                    villagerViewer.SetActive(false);
                 }
             }
         }
@@ -98,7 +103,7 @@ public class VillagerManager : MonoBehaviour
             {
                 Debug.Log("VillagerTooTiredToLearn");
             }
-            villagerViewer.enabled = false;
+            villagerViewer.SetActive(false);
         }
         else
         {
