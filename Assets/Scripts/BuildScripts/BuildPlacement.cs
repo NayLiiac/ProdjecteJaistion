@@ -23,8 +23,8 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     public Material matGrid, matDefault, collisionBuild, buildDefault;
 
     // Récupérer les matériaux collectés par le joueur
-    public GetWoodRessource Wood;
-    public GetStoneRessource Stone;
+    public StockWoodResources Wood;
+    public StockStoneResources Stone;
 
     // Récupère les matériaux requis
     public int BuilderRequired;
@@ -92,7 +92,6 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     // Éviter la superposition des bâtiments
     void OnCollisionEnter(Collision collision)
     {
-
         buildCollision = true;
     }
     void OnCollisionExit(Collision collision)

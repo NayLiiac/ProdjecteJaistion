@@ -324,6 +324,9 @@ GameObject:
   m_Component:
   - component: {fileID: 313377964}
   - component: {fileID: 313377965}
+  - component: {fileID: 313377966}
+  - component: {fileID: 313377967}
+  - component: {fileID: 313377968}
   m_Layer: 0
   m_Name: Ressources
   m_TagString: Untagged
@@ -358,6 +361,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4c0e9a7144b24489306d41403b9983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &313377966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313377960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba13c0dc7368385429a74e4436dd40d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetWoodRessource: {fileID: 1944538993}
+  WoodPickedUp: 0
+--- !u!114 &313377967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313377960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe489cf95c58b4418814f1ed3a440b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetStoneRessource: {fileID: 774964579}
+  StonePickedUp: 0
+--- !u!114 &313377968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313377960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9346680400a03c049a46e7d41149bde6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GetFoodRessource: {fileID: 1250132655}
+  FoodPickedUp: 0
 --- !u!1 &322585771 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3741766406045552620, guid: 4d3a1d7c57f06744eb67181868c8cfbd, type: 3}
@@ -667,11 +712,11 @@ PrefabInstance:
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1944538993}
+      objectReference: {fileID: 0}
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 774964579}
+      objectReference: {fileID: 0}
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: BuilderRequired
       value: 0
@@ -1003,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1625686995385172127, guid: c5989984592e3fa4391946039cd01ef1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1625686995385172127, guid: c5989984592e3fa4391946039cd01ef1, type: 3}
       propertyPath: m_LocalScale.x
@@ -1087,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4d8bfb28cf192449e2944c5c6e8028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StonePickedUp: 0
+  StockStoneResources: {fileID: 313377967}
   waitResource: 4
   startHarvest: 0
 --- !u!1 &831796633
@@ -1354,7 +1399,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 597370781023079604, guid: 02bf4b289ab31e0458c2be6e607b98d6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02bf4b289ab31e0458c2be6e607b98d6, type: 3}
 --- !u!4 &1072464605 stripped
 Transform:
@@ -1597,7 +1643,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3741766406045552594, guid: 4d3a1d7c57f06744eb67181868c8cfbd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3741766406045552594, guid: 4d3a1d7c57f06744eb67181868c8cfbd, type: 3}
       propertyPath: m_LocalScale.x
@@ -1685,7 +1731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2b293064af75347833f255d8bd0898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodPickedUp: 0
+  StockFoodResources: {fileID: 313377968}
   waitResource: 2
   startHarvest: 0
 --- !u!1 &1295076990
@@ -2241,6 +2287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1685639065568188681, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
+    - {fileID: 2257520138414755683, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
 --- !u!1 &1811897790
 GameObject:
@@ -2436,8 +2483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372a48a5e8d6e284cb27bbdda81c1a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StockWoodResources: {fileID: 313377966}
   startHarvest: 0
-  WoodPickedUp: 0
   waitResource: 3
 --- !u!1 &1996683577
 GameObject:
@@ -2544,7 +2591,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiningPoint
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6489665926713405958, guid: 39c6430f704fe3e4f98f9fb5295b6a7f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39c6430f704fe3e4f98f9fb5295b6a7f, type: 3}
 --- !u!1001 &3421671974039342679
 PrefabInstance:
@@ -2630,11 +2678,11 @@ PrefabInstance:
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1944538993}
+      objectReference: {fileID: 0}
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 774964579}
+      objectReference: {fileID: 0}
     - target: {fileID: 3447750956600566030, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2710,11 +2758,11 @@ PrefabInstance:
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1944538993}
+      objectReference: {fileID: 0}
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 774964579}
+      objectReference: {fileID: 0}
     - target: {fileID: 4306684060099573948, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: m_Name
       value: LibraryBuild
@@ -2790,11 +2838,11 @@ PrefabInstance:
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1944538993}
+      objectReference: {fileID: 0}
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 774964579}
+      objectReference: {fileID: 0}
     - target: {fileID: 7008858552211423975, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -2933,11 +2981,11 @@ PrefabInstance:
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1944538993}
+      objectReference: {fileID: 0}
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 774964579}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
 --- !u!114 &8579577857976399938 stripped
