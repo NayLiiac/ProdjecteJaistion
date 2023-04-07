@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5576926318859278519}
   m_Layer: 0
   m_Name: SchoolBuild
-  m_TagString: Untagged
+  m_TagString: School
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   BuildToMove: {fileID: 0}
   Grid: {fileID: 0}
   Build: {fileID: 1304884796069663987}
+  winCondition: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 64

@@ -8,6 +8,8 @@ TagManager:
   - Farm
   - Museum
   - Bookshop
+  - House
+  - School
   layers:
   - Default
   - TransparentFX

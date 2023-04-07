@@ -117,6 +117,11 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
         {
             winCondition.progressionWinCondition += 2;
         }
+
+        if(Build.tag == "Farm")
+        {
+
+        }
     }
 
 }
