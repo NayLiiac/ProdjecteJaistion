@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7398607854038527469}
   - component: {fileID: 7398607854038527464}
   - component: {fileID: 7398607854038527479}
+  - component: {fileID: 5311635092019232012}
   m_Layer: 0
   m_Name: Lumberjack
   m_TagString: Villager
@@ -155,3 +156,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5311635092019232012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7398607854038527470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372a48a5e8d6e284cb27bbdda81c1a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StockWoodResources: {fileID: 0}
+  startHarvest: 0
+  waitResource: 3

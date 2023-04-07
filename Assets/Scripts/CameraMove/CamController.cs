@@ -19,8 +19,7 @@ public class CamController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log("Mouse X : " + Input.mousePosition.x);
-        // Debug.Log("Mouse Y : " + Input.mousePosition.z);
+         
 
         // Stop camera moves according to mouse position
         if (Input.GetMouseButton(0))
@@ -37,6 +36,9 @@ public class CamController : MonoBehaviour
         // Camera moves according to mouse position
         if (! isMouseOffScreen)
         {
+            //Debug.Log("Mouse X : " + Input.mousePosition.x);
+            //Debug.Log("Mouse Y : " + Input.mousePosition.z);
+
             float xInput = Input.GetAxis("Mouse X");
             float zInput = Input.GetAxis("Mouse Y");
 
