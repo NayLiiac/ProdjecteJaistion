@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Villager
+  - Farm
+  - Museum
+  - Bookshop
+  - House
+  - School
   layers:
   - Default
   - TransparentFX

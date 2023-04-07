@@ -12,12 +12,15 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
     public GameObject Grid;
     public GameObject Build;
 
+    public WinCondition winCondition;
+
     public LayerMask mask;
     public float LastPosY;
     public Vector3 MousePos;
 
     public bool selectBuild = false;
     public bool buildCollision = false;
+    public bool isFarmBuilt = false;
 
     private Renderer rend;
     public Material matGrid, matDefault, collisionBuild, buildDefault;
@@ -80,6 +83,9 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
                     Grid.SetActive(false);
                     selectBuild = false;
 
+                    //Effet des bâtiments
+                    BuildingEffect();
+
                     //Retrait des ressources 
                     Wood.WoodPickedUp -= WoodRequired;
                     Stone.StonePickedUp -= StoneRequired;
@@ -99,4 +105,23 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
         Build.GetComponent<MeshRenderer>().material = buildDefault;
         buildCollision = false;
     }
+
+    private void BuildingEffect()
+    {
+        if (Build.tag == "Bookshop")
+        {
+            winCondition.progressionWinCondition += 10;
+        }
+
+        if (Build.tag == "Museum")
+        {
+            winCondition.progressionWinCondition += 25;
+        }
+
+        if (Build.tag == "Farm")
+        {
+            isFarmBuilt = true;
+        }
+    }
+
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3202277852057910861}
   m_Layer: 0
   m_Name: FarmBuild
-  m_TagString: Untagged
+  m_TagString: Farm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   BuildToMove: {fileID: 0}
   Grid: {fileID: 0}
   Build: {fileID: 3447750956600566032}
+  winCondition: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 64
