@@ -21,15 +21,20 @@ public class CamController : MonoBehaviour
     {
         // Debug.Log("Mouse X : " + Input.mousePosition.x);
         // Debug.Log("Mouse Y : " + Input.mousePosition.z);
-        
+
+        // Stop camera moves according to mouse position
         if (Input.GetMouseButton(0))
         {
             isMouseOffScreen = true;
         }
+
+        // Reset camera moves according to mouse position
         if (Input.GetMouseButton(1))
         {
             isMouseOffScreen = false;
         }
+
+        // Camera moves according to mouse position
         if (! isMouseOffScreen)
         {
             float xInput = Input.GetAxis("Mouse X");
@@ -40,6 +45,7 @@ public class CamController : MonoBehaviour
             transform.position += dir * speed;
         }
 
+        // Allows to zoom
         if (Input.GetAxis("Mouse ScrollWheel") != 0f)
         {
             cam.fieldOfView += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;

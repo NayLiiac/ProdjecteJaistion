@@ -299,7 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372a48a5e8d6e284cb27bbdda81c1a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WoodPickedUp: 20
+  WoodPickedUp: 257
+  waitResource: 3
+  startHarvest: 0
 --- !u!114 &313377962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4d8bfb28cf192449e2944c5c6e8028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StonePickedUp: 20
+  StonePickedUp: 224
+  waitResource: 4
+  startHarvest: 0
 --- !u!114 &313377963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2b293064af75347833f255d8bd0898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodPickedUp: 0
+  FoodPickedUp: 208
+  waitResource: 2
+  startHarvest: 0
 --- !u!4 &313377964
 Transform:
   m_ObjectHideFlags: 0
