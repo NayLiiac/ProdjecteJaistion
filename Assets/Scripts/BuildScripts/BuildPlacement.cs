@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
-public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/watch?v=ImiyFWZkMAA pour le placement du build et l'apparition de la grille
+public class BuildPlacement : MonoBehaviour     
+// youtube video https://www.youtube.com/watch?v=ImiyFWZkMAA for build placement and spawning grid
 {
     public GameObject BuildToPlace;
     public GameObject BuildToMove;
@@ -20,20 +21,23 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
 
     public bool selectBuild = false;
     public bool buildCollision = false;
-    public bool isFarmBuilt = false;
 
-    private Renderer rend;
+    // Will check whether or not a farm is build 
+    public bool isFarmBuilt = false;
+    public GameObject FarmButton;
+
     public Material matGrid, matDefault, collisionBuild, buildDefault;
 
-    // Récupérer les matériaux collectés par le joueur
+    // Pickup resources collected by the player's villagers
     public StockWoodResources Wood;
     public StockStoneResources Stone;
 
-    // Récupère les matériaux requis
+    // How much resources a build requires 
     public int BuilderRequired;
     public int WoodRequired;
     public int StoneRequired;
 
+    
     public void BuildPlace(GameObject buildPlace)
     {
         BuildToPlace = buildPlace;
@@ -83,10 +87,9 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
                     Grid.SetActive(false);
                     selectBuild = false;
 
-                    //Effet des bâtiments
                     BuildingEffect();
 
-                    //Retrait des ressources 
+                    // Consume resources when player chose to place a build
                     Wood.WoodPickedUp -= WoodRequired;
                     Stone.StonePickedUp -= StoneRequired;
                     gameObject.SetActive(false);
@@ -106,21 +109,30 @@ public class BuildPlacement : MonoBehaviour     //vidéo https://www.youtube.com/
         buildCollision = false;
     }
 
-    private void BuildingEffect()
+
+    // Building Effect Method
+    void BuildingEffect()
     {
         if (Build.tag == "Bookshop")
         {
-            winCondition.progressionWinCondition += 10;
+            // at each bookshop placed, the player earn x prosperity points, then, check if the player has won
+            winCondition.prosperityPoints += 5;
+            winCondition.CheckVictory();
         }
 
         if (Build.tag == "Museum")
         {
-            winCondition.progressionWinCondition += 25;
+            // at each museum placed, the player earn x prosperity points, then, check if the player has won
+            winCondition.prosperityPoints += 10;
+            winCondition.CheckVictory();
         }
 
         if (Build.tag == "Farm")
         {
+            // when a farm is placed, the player earn a food pickup boost;
+            // then, the farm build button disappear, allowing only one farm per run
             isFarmBuilt = true;
+            FarmButton.gameObject.SetActive(false);
         }
     }
 

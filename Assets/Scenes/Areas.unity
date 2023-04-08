@@ -137,11 +137,23 @@ PrefabInstance:
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1483303814}
+      objectReference: {fileID: 1086243019}
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 1483303815}
+      objectReference: {fileID: 1086243018}
+    - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
+      propertyPath: MuseumValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
+      propertyPath: winCondition
+      value: 
+      objectReference: {fileID: 1273584930}
+    - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
+      propertyPath: BookshopValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4841807131937238040, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -226,6 +238,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242239220 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6906430979119403900, guid: 8fb4e802352f11046862321d3d3b05d0, type: 3}
+  m_PrefabInstance: {fileID: 1011251516451342364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &267539338
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,14 +797,30 @@ PrefabInstance:
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1483303814}
+      objectReference: {fileID: 1086243019}
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 1483303815}
+      objectReference: {fileID: 1086243018}
+    - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
+      propertyPath: MuseumValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
+      propertyPath: winCondition
+      value: 
+      objectReference: {fileID: 1273584930}
+    - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
+      propertyPath: BookshopValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4306684060099573948, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: m_Name
       value: LibraryBuild
+      objectReference: {fileID: 0}
+    - target: {fileID: 4306684060099573948, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
+      propertyPath: m_TagString
+      value: Bookshop
       objectReference: {fileID: 0}
     - target: {fileID: 4306684060099574086, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: m_RootOrder
@@ -849,11 +882,23 @@ PrefabInstance:
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1483303814}
+      objectReference: {fileID: 1086243019}
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 1483303815}
+      objectReference: {fileID: 1086243018}
+    - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
+      propertyPath: MuseumValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
+      propertyPath: winCondition
+      value: 
+      objectReference: {fileID: 1273584930}
+    - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
+      propertyPath: BookshopValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7008858552211423975, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -901,6 +946,10 @@ PrefabInstance:
     - target: {fileID: 7008858552211423997, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: m_Name
       value: MuseumBuild
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008858552211423997, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
+      propertyPath: m_TagString
+      value: Museum
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
@@ -1082,6 +1131,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ad1f3b966690e4a8116baf059b306d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1086243017
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.30516702
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.608204
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.1383443
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990241, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990242, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: StonePickedUp
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990242, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: GetStoneRessource
+      value: 
+      objectReference: {fileID: 7537554382601711785}
+    - target: {fileID: 8814063392472990243, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: WoodPickedUp
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990243, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: GetWoodRessource
+      value: 
+      objectReference: {fileID: 2042545660508063809}
+    - target: {fileID: 8814063392472990245, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: m_Name
+      value: Ressources
+      objectReference: {fileID: 0}
+    - target: {fileID: 8814063392472990269, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: build
+      value: 
+      objectReference: {fileID: 608580979}
+    - target: {fileID: 8814063392472990269, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+      propertyPath: GetFoodRessource
+      value: 
+      objectReference: {fileID: 1811236676069633394}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+--- !u!114 &1086243018 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8814063392472990242, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+  m_PrefabInstance: {fileID: 1086243017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe489cf95c58b4418814f1ed3a440b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1086243019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8814063392472990243, guid: 3efd23d8c55279b46b4376449544aab9, type: 3}
+  m_PrefabInstance: {fileID: 1086243017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba13c0dc7368385429a74e4436dd40d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171273204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3421671974420670733, guid: a6e5dc0ffaa4d7744a33e5d2c7211b79, type: 3}
@@ -1193,14 +1345,30 @@ PrefabInstance:
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1483303814}
+      objectReference: {fileID: 1086243019}
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 1483303815}
+      objectReference: {fileID: 1086243018}
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: LastPosY
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
+      propertyPath: FarmButton
+      value: 
+      objectReference: {fileID: 242239220}
+    - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
+      propertyPath: MuseumValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
+      propertyPath: winCondition
+      value: 
+      objectReference: {fileID: 1273584930}
+    - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
+      propertyPath: BookshopValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3447750956600566030, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: m_RootOrder
@@ -1309,8 +1477,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   age: 0
   deathAge: 10
-  tired: 0
   agent: {fileID: 1405159929}
+  getsTired: 0
+  tired: 0
+  goesToHouse: 0
+  goesToSchool: 0
 --- !u!136 &1405159925
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1443,6 +1614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodquantity: 10
   villagerViewer: {fileID: 267539341}
+  workText: {fileID: 0}
+  ageText: {fileID: 0}
   villagerList:
   - {fileID: 1405159924}
   houseList: []
@@ -1451,6 +1624,10 @@ MonoBehaviour:
   mine: {fileID: 7537554382601711784}
   wanderingPlace: {fileID: 1875903845}
   school: {fileID: 0}
+  lumberjackPrefab: {fileID: 0}
+  farmerPrefab: {fileID: 0}
+  minerPrefab: {fileID: 0}
+  builderPrefab: {fileID: 0}
   selectedVillager: {fileID: 0}
 --- !u!4 &1424038220
 Transform:
@@ -1466,85 +1643,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1483303813
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1483303817}
-  - component: {fileID: 1483303816}
-  - component: {fileID: 1483303815}
-  - component: {fileID: 1483303814}
-  m_Layer: 0
-  m_Name: Ressources
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1483303814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483303813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 372a48a5e8d6e284cb27bbdda81c1a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WoodPickedUp: 20
-  waitResource: 3
-  startHarvest: 0
---- !u!114 &1483303815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483303813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4d8bfb28cf192449e2944c5c6e8028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StonePickedUp: 20
-  waitResource: 4
-  startHarvest: 0
---- !u!114 &1483303816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483303813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2b293064af75347833f255d8bd0898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FoodPickedUp: 20
-  waitResource: 2
-  startHarvest: 0
---- !u!4 &1483303817
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483303813}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1047.669, y: -1633.7585, z: 888.4036}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1690482901
 GameObject:
@@ -1853,11 +1951,23 @@ PrefabInstance:
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: Wood
       value: 
-      objectReference: {fileID: 1483303814}
+      objectReference: {fileID: 1086243019}
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: Stone
       value: 
-      objectReference: {fileID: 1483303815}
+      objectReference: {fileID: 1086243018}
+    - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
+      propertyPath: MuseumValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
+      propertyPath: winCondition
+      value: 
+      objectReference: {fileID: 1273584930}
+    - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
+      propertyPath: BookshopValue
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
 --- !u!1001 &1011251516451342364
@@ -2204,6 +2314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 158944171}
     m_Modifications:
+    - target: {fileID: 597370781023079604, guid: 02bf4b289ab31e0458c2be6e607b98d6, type: 3}
+      propertyPath: StockWoodResources
+      value: 
+      objectReference: {fileID: 1086243019}
     - target: {fileID: 1130582908778537813, guid: 02bf4b289ab31e0458c2be6e607b98d6, type: 3}
       propertyPath: m_Name
       value: LumberingPoint
@@ -2275,11 +2389,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5414740307118064869, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
   m_PrefabInstance: {fileID: 5910917026905926036}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1811236676069633394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2257520138414755683, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
+  m_PrefabInstance: {fileID: 5910917026905926036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2b293064af75347833f255d8bd0898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2042545660508063808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1133611781228305863, guid: 02bf4b289ab31e0458c2be6e607b98d6, type: 3}
   m_PrefabInstance: {fileID: 1433254760786875783}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2042545660508063809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 597370781023079604, guid: 02bf4b289ab31e0458c2be6e607b98d6, type: 3}
+  m_PrefabInstance: {fileID: 1433254760786875783}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372a48a5e8d6e284cb27bbdda81c1a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2693969940740031609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2478,6 +2614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 158944171}
     m_Modifications:
+    - target: {fileID: 4316086175766668486, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.028
+      objectReference: {fileID: 0}
     - target: {fileID: 5414740307118064869, guid: c960027ede9cda847b32ea3ee4ee7e20, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2610,6 +2750,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4996437565327570234, guid: 39c6430f704fe3e4f98f9fb5295b6a7f, type: 3}
   m_PrefabInstance: {fileID: 3300061796646094226}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7537554382601711785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6489665926713405958, guid: 39c6430f704fe3e4f98f9fb5295b6a7f, type: 3}
+  m_PrefabInstance: {fileID: 3300061796646094226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce4d8bfb28cf192449e2944c5c6e8028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7962889348106675452
 PrefabInstance:
   m_ObjectHideFlags: 0
