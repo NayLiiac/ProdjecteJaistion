@@ -28,7 +28,7 @@ public class CamController : MonoBehaviour
         }
 
         // Reset camera moves according to mouse position
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(2))
         {
             isMouseOffScreen = false;
         }

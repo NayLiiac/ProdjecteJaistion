@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PauseTime : MonoBehaviour
 {
+    public ClockTime clockTime;
+
     public bool isPaused = false;
 
-    //Ce script sert à mettre le jeu en pause
+    //This script is used to pause the game
     private void TogglePause()
     {
         if (isPaused)
@@ -20,23 +22,21 @@ public class PauseTime : MonoBehaviour
         }
     }
 
-    //Pour cela, on définit simplement si le temps passe ou pas
+    //To do this, we simply define if the time passes or not.
 
     private void Pause()
     {
         Time.timeScale = 0.0f;
         isPaused = true;
-        
     }
 
     private void Resume()
     {
         Time.timeScale = 1.0f;
         isPaused = false;
-        
     }
 
-    //Le temps ou la pause est définie selon si le joueur lance la pause avec la touche escape
+    //The time or the pause is defined depending on if the player launches the pause with the escape key
 
     private void Update()
     {
@@ -51,12 +51,6 @@ public class PauseTime : MonoBehaviour
             {
                 Resume();
             }
-
-
         }
     }
-
-
-
-
 }
