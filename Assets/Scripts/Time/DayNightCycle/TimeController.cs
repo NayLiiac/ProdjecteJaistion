@@ -15,6 +15,8 @@ public class TimeController : MonoBehaviour
     public int morning = 8;
     public int night = 20;
 
+    public ClockTime clockTime;
+
     public SpawnVillagers spawnVillager;
     public bool villagerHasSpawned = false;
 
@@ -55,6 +57,7 @@ public class TimeController : MonoBehaviour
     {
         timeOfDay = (timeOfDay + Time.deltaTime * 2) % cycleLength;
         roundedTimeOfDay = Mathf.RoundToInt(timeOfDay);
+        clockTime.ClockSpeed();
     }
 
     //Cette fonction définit quelle méthode est utilisée pour le passage du temps, soit en normal soit en *2
