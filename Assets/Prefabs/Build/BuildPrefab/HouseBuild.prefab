@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841807131937238046}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.36, y: 0.5, z: -3.69}
+  m_LocalPosition: {x: 0, y: 0.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139,6 +139,12 @@ MonoBehaviour:
   MousePos: {x: 0, y: 0, z: 0}
   selectBuild: 0
   buildCollision: 0
+  isFarmBuilt: 0
+  FarmButton: {fileID: 0}
+  HouseButton: {fileID: 0}
+  BookshopButton: {fileID: 0}
+  MuseumButton: {fileID: 0}
+  SchoolButton: {fileID: 0}
   matGrid: {fileID: 2100000, guid: e1969c0d7a38f0e40bb79d6d5c14552a, type: 2}
   matDefault: {fileID: 2100000, guid: 11514015b7e2851419291c47f06bc19b, type: 2}
   collisionBuild: {fileID: 2100000, guid: 4a0cf3cd627dea24ab0d3a25a91e777b, type: 2}
@@ -148,3 +154,4 @@ MonoBehaviour:
   BuilderRequired: 0
   WoodRequired: 5
   StoneRequired: 5
+  ResourcesRequiredOnUI: {fileID: 0}
