@@ -33,10 +33,10 @@ public class BuildPlacement : MonoBehaviour
     public StockStoneResources Stone;
 
     // How much resources a build requires 
-    public int BuilderRequired;
-    public int WoodRequired;
-    public int StoneRequired;
+    public int BuilderRequired, WoodRequired, StoneRequired;
 
+    // Represent visually the resources required
+    
     
     public void BuildPlace(GameObject buildPlace)
     {
@@ -52,12 +52,15 @@ public class BuildPlacement : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
+
+
     }
     void Update()
     {
         if (selectBuild)
         {
             Grid.SetActive(true);
+
 
             MousePos = Input.mousePosition;
             Ray ray = Camera.main.ScreenPointToRay(MousePos);
@@ -82,7 +85,7 @@ public class BuildPlacement : MonoBehaviour
                 
                 if (Input.GetMouseButtonDown(1) && Wood.WoodPickedUp >= WoodRequired && Stone.StonePickedUp >= StoneRequired && VillagerManager.instance.GetBuilderNumber() >= BuilderRequired)
                 {
-                    Debug.Log("Placé");
+                    
                     Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
                     Grid.SetActive(false);
                     selectBuild = false;
@@ -91,8 +94,14 @@ public class BuildPlacement : MonoBehaviour
 
                     // Consume resources when player chose to place a build
                     Wood.WoodPickedUp -= WoodRequired;
+                    Wood.UpdateResourceText();
+
                     Stone.StonePickedUp -= StoneRequired;
+                    Stone.UpdateResourceText();
+
                     gameObject.SetActive(false);
+
+
 
                 }
             }
@@ -132,7 +141,7 @@ public class BuildPlacement : MonoBehaviour
             // when a farm is placed, the player earn a food pickup boost;
             // then, the farm build button disappear, allowing only one farm per run
             isFarmBuilt = true;
-            FarmButton.gameObject.SetActive(false);
+            FarmButton.SetActive(false);
         }
     }
 
