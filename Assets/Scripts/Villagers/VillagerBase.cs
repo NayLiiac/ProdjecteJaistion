@@ -22,6 +22,7 @@ public abstract class VillagerBase : MonoBehaviour
     private Vector3 agentTarget;
     private float distanceToTarget;
 
+    public bool isLearning = false;
     private Work futurework = Work.Nothing;
 
     public virtual Work workClass => Work.Nothing;
@@ -97,7 +98,7 @@ public abstract class VillagerBase : MonoBehaviour
             agent.destination = agentTarget;
             goesToSchool = true;
 
-            this.futurework = newWork;
+            futurework = newWork;
             Debug.Log($"{workClass} is now a {newWork}");
         }
         else
@@ -121,7 +122,15 @@ public abstract class VillagerBase : MonoBehaviour
         Debug.Log($"villager now still tired {tired}");
     }
 
+    //Makes the villager learn (they learn by sleeping don't question it)
     public void LearnNewJob()
+    {
+        isLearning = true;
+        Sleep();
+    }
+
+    //Creates a new villager to replace the old one based on futurework
+    public void FinishLearning()
     {
         if (futurework != Work.Nothing)
         {
@@ -135,8 +144,6 @@ public abstract class VillagerBase : MonoBehaviour
                     newWorker.GetComponent<LumberjackBehaviour>().getsTired = true;
 
                     VillagerManager.instance.AddVillager(newWorker.GetComponent<LumberjackBehaviour>());
-
-                    VillagerManager.instance.KillVillager(this);
                     break;
 
                 case Work.Farmer:
@@ -145,8 +152,6 @@ public abstract class VillagerBase : MonoBehaviour
                     newWorker.GetComponent<FarmerBehaviour>().getsTired = true;
 
                     VillagerManager.instance.AddVillager(newWorker.GetComponent<FarmerBehaviour>());
-
-                    VillagerManager.instance.KillVillager(this);
                     break;
 
                 case Work.Miner:
@@ -155,8 +160,6 @@ public abstract class VillagerBase : MonoBehaviour
                     newWorker.GetComponent<MinerBehaviour>().getsTired = true;
 
                     VillagerManager.instance.AddVillager(newWorker.GetComponent<MinerBehaviour>());
-
-                    VillagerManager.instance.KillVillager(this);
                     break;
 
                 case Work.Builder:
@@ -165,10 +168,10 @@ public abstract class VillagerBase : MonoBehaviour
                     newWorker.GetComponent<BuilderBehaviour>().getsTired = true;
 
                     VillagerManager.instance.AddVillager(newWorker.GetComponent<BuilderBehaviour>());
-
-                    VillagerManager.instance.KillVillager(this);
                     break;
             }
+
+            VillagerManager.instance.KillVillager(this);
         }
     }
 

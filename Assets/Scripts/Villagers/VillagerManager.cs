@@ -56,6 +56,7 @@ public class VillagerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Uses raycast from the mouse to check if the user clicks on a villager
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -90,7 +91,7 @@ public class VillagerManager : MonoBehaviour
         houseList.Add(house);
     }
 
-    //
+    //Has the selected villager go to school to learn a new job. The villager needs to not be tired
     public void ReformVillager(int workNumber)
     {
         if (selectedVillager != null)
@@ -149,7 +150,25 @@ public class VillagerManager : MonoBehaviour
     //Manages Villager Behaviour when night come
     public void NightTime()
     {
-        //List of villager to remove once the while is over
+        //List of villager that will finish learning (the list would be modified otherwise)
+        List<VillagerBase> thoseThatLearn = new List<VillagerBase>();
+
+        foreach (VillagerBase villager in villagerList)
+        {
+            if (villager.isLearning)
+            {
+                thoseThatLearn.Add(villager);
+            }
+        }
+
+        //Have the villagers finish their learning (now tht I'm out of villagerList's foreach, I can modify it
+        foreach (VillagerBase villager in thoseThatLearn)
+        {
+            villager.FinishLearning();
+        }
+
+
+        //List of villager to remove once the while is over (same problem)
         List<VillagerBase> thoseToRemove = new List<VillagerBase>();
 
         //Age the villagers and kills them if they're too old
