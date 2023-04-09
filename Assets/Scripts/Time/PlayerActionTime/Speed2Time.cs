@@ -8,7 +8,7 @@ public class Speed2Time : MonoBehaviour
     public bool isTimeTwo = false;
 
     //Ce script utilise les fonctions de passage du temps définies dans le TimeController, et si le joueur appuie sur espace, double la vitesse du jeu
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -21,12 +21,6 @@ public class Speed2Time : MonoBehaviour
             {
                 isTimeTwo = false;
             }
-
-
         }
     }
-
-
-
-
 }

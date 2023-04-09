@@ -18,8 +18,6 @@ public class GetFoodRessource : MonoBehaviour
         }
     }
 
-   
-
     //a villager enters the area
     void OnTriggerEnter(Collider collision)
     {
