@@ -183,6 +183,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
+      propertyPath: ResourceRequiredOnUI
+      value: 
+      objectReference: {fileID: 3692108704729500102}
+    - target: {fileID: 1611681223234421803, guid: 255b281b33789c44190ee7efe28a135a, type: 3}
       propertyPath: ResourcesRequiredOnUI
       value: 
       objectReference: {fileID: 125805775}
@@ -421,6 +425,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7338051909418106144}
     - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
+      propertyPath: ResourceRequiredOnUI
+      value: 
+      objectReference: {fileID: 3692108704729500101}
+    - target: {fileID: 2438877811374313563, guid: 69ba4f6b8b18b9c4db04f23fb424bc1b, type: 3}
       propertyPath: ResourcesRequiredOnUI
       value: 
       objectReference: {fileID: 125805775}
@@ -538,6 +546,10 @@ PrefabInstance:
       propertyPath: BookshopButton
       value: 
       objectReference: {fileID: 7338051909418106144}
+    - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
+      propertyPath: ResourceRequiredOnUI
+      value: 
+      objectReference: {fileID: 3692108704729500100}
     - target: {fileID: 1647381016051119186, guid: 474671c42ea7f7643bfecfe23704fcd8, type: 3}
       propertyPath: ResourcesRequiredOnUI
       value: 
@@ -1055,6 +1067,10 @@ PrefabInstance:
       propertyPath: BookshopButton
       value: 
       objectReference: {fileID: 7338051909418106144}
+    - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
+      propertyPath: ResourceRequiredOnUI
+      value: 
+      objectReference: {fileID: 125805775}
     - target: {fileID: 3202277852057910861, guid: 511edd2c25ee18841bfcd4febc4d3a3c, type: 3}
       propertyPath: ResourcesRequiredOnUI
       value: 
@@ -1761,6 +1777,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7338051909418106144}
     - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
+      propertyPath: ResourceRequiredOnUI
+      value: 
+      objectReference: {fileID: 3692108704729500099}
+    - target: {fileID: 5576926318859278519, guid: 772ff18a240c5664dbd1906832baf191, type: 3}
       propertyPath: ResourcesRequiredOnUI
       value: 
       objectReference: {fileID: 125805775}
@@ -2173,6 +2193,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1213246457792155051, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1428034393615618989, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 921.6
@@ -2204,6 +2228,32 @@ PrefabInstance:
     - target: {fileID: 2117840793086576523, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3004138924995747786, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_text
+      value: 'Required Resources
+
+
+        15
+
+
+        10
+
+
+        5'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384509580586051001, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_text
+      value: 'Required Resources
+
+
+        50
+
+
+        20
+
+
+        3'
       objectReference: {fileID: 0}
     - target: {fileID: 3621565254588951909, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2369,6 +2419,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 903
       objectReference: {fileID: 0}
+    - target: {fileID: 5058718704189668899, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250027683524605683, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_text
+      value: 'Required Resources
+
+
+        80
+
+
+        120
+
+
+        8'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5624324472797815510, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5699366099934913058, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_text
       value: '0
@@ -2392,6 +2463,10 @@ PrefabInstance:
     - target: {fileID: 6262534674140738786, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_Name
       value: Bookshop
+      objectReference: {fileID: 0}
+    - target: {fileID: 7117450705448195660, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7135016962033077225, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2443,12 +2518,36 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 8497180039316135105, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9103689566772262621, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
       propertyPath: m_Name
       value: WoodResourcesText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+--- !u!1 &3692108704729500099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1213246457792155051, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 3692108704729500098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3692108704729500100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5058718704189668899, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 3692108704729500098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3692108704729500101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8497180039316135105, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 3692108704729500098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3692108704729500102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5624324472797815510, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 3692108704729500098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5895279563340127072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7128420620945429154, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}

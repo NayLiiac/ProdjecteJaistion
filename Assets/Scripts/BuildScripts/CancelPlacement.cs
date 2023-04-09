@@ -16,6 +16,7 @@ public class CancelPlacement : MonoBehaviour
             BuildPlacement[i].selectBuild = false;
             BuildPlacement[i].gameObject.SetActive(false);
             BuildPlacement[i].Grid.SetActive(false);
+            BuildPlacement[i].ResourceRequiredOnUI.SetActive(false);
         }
 
         

@@ -36,7 +36,7 @@ public class BuildPlacement : MonoBehaviour
     public int BuilderRequired, WoodRequired, StoneRequired;
 
     // Represent visually the resources required
-    
+    public GameObject ResourceRequiredOnUI;
     
     public void BuildPlace(GameObject buildPlace)
     {
@@ -47,11 +47,13 @@ public class BuildPlacement : MonoBehaviour
         BuildToMove = buildMove;
         selectBuild = true;
         gameObject.SetActive(true);
+        ResourceRequiredOnUI.SetActive(true);
 
     }
     void Start()
     {
         gameObject.SetActive(false);
+        ResourceRequiredOnUI.SetActive(false);
 
 
     }
@@ -100,7 +102,7 @@ public class BuildPlacement : MonoBehaviour
                     Stone.UpdateResourceText();
 
                     gameObject.SetActive(false);
-
+                    ResourceRequiredOnUI.SetActive(false);
 
 
                 }
