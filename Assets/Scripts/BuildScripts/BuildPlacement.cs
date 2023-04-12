@@ -26,6 +26,7 @@ public class BuildPlacement : MonoBehaviour
     public bool isFarmBuilt = false;
     public GameObject FarmButton;
 
+
     public Material matGrid, matDefault, collisionBuild, buildDefault;
 
     // Pickup resources collected by the player's villagers
@@ -144,6 +145,10 @@ public class BuildPlacement : MonoBehaviour
             // then, the farm build button disappear, allowing only one farm per run
             isFarmBuilt = true;
             FarmButton.SetActive(false);
+        }
+        if (Build.tag == "School")
+        {
+            // VillagerManager.instance.schoolPlaced = true;
         }
     }
 
