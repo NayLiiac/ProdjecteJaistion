@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PauseTime : MonoBehaviour
 {
-    public ClockTime clockTime;
-
     public bool isPaused = false;
 
     //This script is used to pause the game
