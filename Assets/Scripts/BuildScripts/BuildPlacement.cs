@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class BuildPlacement : MonoBehaviour     
 // youtube video https://www.youtube.com/watch?v=ImiyFWZkMAA for build placement and spawning grid
 {
+    public GameObject Area;
+
     public GameObject BuildToPlace;
     public GameObject BuildToMove;
     public GameObject Grid;
@@ -26,6 +29,9 @@ public class BuildPlacement : MonoBehaviour
     public bool isFarmBuilt = false;
     public GameObject FarmButton;
 
+    // Will check whether or not a school is build 
+    public bool isSchoolBuilt = false;
+    public GameObject SchoolButton;
 
     public Material matGrid, matDefault, collisionBuild, buildDefault;
 
@@ -56,7 +62,6 @@ public class BuildPlacement : MonoBehaviour
         gameObject.SetActive(false);
         ResourceRequiredOnUI.SetActive(false);
 
-
     }
     void Update()
     {
@@ -78,7 +83,6 @@ public class BuildPlacement : MonoBehaviour
 
                 if (buildCollision)
                 {
-                    
                     Build.GetComponent<MeshRenderer>().material = collisionBuild;
                 }
             }
@@ -89,7 +93,16 @@ public class BuildPlacement : MonoBehaviour
                 if (Input.GetMouseButtonDown(1) && Wood.WoodPickedUp >= WoodRequired && Stone.StonePickedUp >= StoneRequired && VillagerManager.instance.GetBuilderNumber() >= BuilderRequired)
                 {
                     
-                    Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
+                    GameObject checkBuilding = Instantiate(BuildToPlace, BuildToMove.transform.position, Quaternion.identity);
+                    if (checkBuilding.tag == "School") 
+                    {
+                        VillagerManager.instance.school = checkBuilding.transform;
+                    }
+                    if (checkBuilding.tag == "House")
+                    {
+                        VillagerManager.instance.AddHouse(checkBuilding);
+                    }
+
                     Grid.SetActive(false);
                     selectBuild = false;
 
@@ -148,7 +161,10 @@ public class BuildPlacement : MonoBehaviour
         }
         if (Build.tag == "School")
         {
-            // VillagerManager.instance.schoolPlaced = true;
+            // when a school is placed then, the school build button disappear, allowing only one school per run
+            isSchoolBuilt = true;
+            SchoolButton.SetActive(false);
+
         }
     }
 

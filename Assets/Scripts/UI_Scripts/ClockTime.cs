@@ -4,47 +4,25 @@ using UnityEngine;
 
 public class ClockTime : MonoBehaviour
 {
-    public PauseTime pauseTime;
     public TimeController timeControl;
-    public Speed2Time speed2Time;
+    public PauseTime pauseTime;
 
     public GameObject Needle;
-    public int speedClock;
-    private int defaultSpeedClock;
+    public int needleSpeed;
 
-     void Start()
-    {
-        defaultSpeedClock = speedClock;
-    }
     public void Update()
     {
-        Needle.transform.Rotate(Vector3.back * Time.deltaTime * speedClock); //rotate the clock 
+       
+        //rotate the clock 
+        Needle.transform.Rotate(Vector3.back * (360 / timeControl.cycleLength) * Time.deltaTime * needleSpeed);
 
-        
-
-        //recover the script PauseTime to check if the time is paused 
         if (pauseTime.isPaused)
         {
-            speedClock = 0; //stop the clock rotation for time paused
+            needleSpeed = 0;
         }
-
-        if (pauseTime.isPaused == false)
+        else
         {
-            speedClock = defaultSpeedClock; //put back the clock rotation
-        }
-    }
-
-    public void ClockSpeed ()
-    {
-        //if the time is accelerated the clock rotation must be accelerated
-        if (speed2Time.isTimeTwo)
-        {
-            speedClock = speedClock * 2; //accelerate the rotation time
-        }
-
-        if (speed2Time.isTimeTwo == false)
-        {
-            speedClock = defaultSpeedClock; //normal speed
+            needleSpeed = timeControl.timeSpeed;
         }
     }
 }

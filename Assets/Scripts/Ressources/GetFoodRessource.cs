@@ -6,35 +6,28 @@ public class GetFoodRessource : MonoBehaviour
 {
     public StockFoodResources StockFoodResources;
 
-    public int waitResource = 2;
-    public bool startHarvest;
+    public int waitResource = 4;
+    public bool isHarvesting = false;
 
-    void Update()
-    {
-        if (startHarvest)
-        {
-            StockFoodResources.RecupResource();
-            startHarvest = false;
-        }
-    }
 
     //a villager enters the area
     void OnTriggerEnter(Collider collision)
     {
-        startHarvest = true;
-    }
+        if (collision.tag == "Villager")
+        {
+            isHarvesting = true;
+            StockFoodResources.PickedUpResource();
 
-    //stop the coroutine when the villager is out the area
-    void OnTriggerExit(Collider collision)
-    {
-        startHarvest = false;
-        StopCoroutine(WaitResource());
+        }
     }
 
     //wait time for retrieve a new resource
     public IEnumerator WaitResource()
     {
         yield return new WaitForSeconds(waitResource);
-        StockFoodResources.RecupResource();
+        if (isHarvesting) 
+        { 
+            StockFoodResources.PickedUpResource(); 
+        }
     }
 }

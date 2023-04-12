@@ -11,7 +11,7 @@ public class StockStoneResources : MonoBehaviour
     public TextMeshProUGUI StoneNumber;
 
     //PickedUpResource and start coroutine for wait
-    public void RecupResource()
+    public void PickedUpResource()
     {
         StonePickedUp++;
         StartCoroutine(GetStoneRessource.WaitResource());

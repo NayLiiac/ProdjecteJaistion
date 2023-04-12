@@ -10,7 +10,8 @@ public class VillagerManager : MonoBehaviour
 
     //Different variables
     public StockFoodResources foodquantity;
-    public bool schoolPlaced = false;
+    public WinCondition happiness;
+    //public bool schoolPlaced = false;
 
     //The UI
     public GameObject villagerViewer;
@@ -27,7 +28,7 @@ public class VillagerManager : MonoBehaviour
     public Transform farm;
     public Transform mine;
     public Transform wanderingPlace;
-    public Transform school;
+    public Transform school = null;
 
     //The prefabs
     public GameObject lumberjackPrefab;
@@ -72,7 +73,7 @@ public class VillagerManager : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Villager")
                 {
                     selectedVillager = hit.transform.gameObject.GetComponent<VillagerBase>();
-                    Debug.Log(hit.transform.gameObject.tag);
+                    // Debug.Log(hit.transform.gameObject.tag);
 
                     villagerViewer.SetActive(true);
                     ChangeUI();
@@ -91,7 +92,7 @@ public class VillagerManager : MonoBehaviour
         workText.SetText($"{selectedVillager.workClass}");
         ageText.SetText($"Age : {selectedVillager.age}");
 
-        if (schoolPlaced == false)
+        if (school == null)
         {
             foreach (Button button in workbuttons)
             {
@@ -111,6 +112,9 @@ public class VillagerManager : MonoBehaviour
     public void AddVillager(VillagerBase villager)
     {
         villagerList.Add(villager);
+        happiness.prosperityPoints += 1;
+        happiness.CheckVictory();
+
     }
 
     //Adds a house to the list
@@ -130,13 +134,13 @@ public class VillagerManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("VillagerTooTiredToLearn");
+                // Debug.Log("VillagerTooTiredToLearn");
             }
             villagerViewer.SetActive(false);
         }
         else
         {
-            Debug.LogError("ERROR : VillagerManager : ReformVillager : selected villager is null");
+            // Debug.LogError("ERROR : VillagerManager : ReformVillager : selected villager is null");
         }
     }
 
@@ -154,23 +158,24 @@ public class VillagerManager : MonoBehaviour
                 {
                     //Debug.Log("Lumberjack goes to work");
                     villager.GoToWork(this.forest);
+                    villager.getsTired = true;
                 }
                 else if (villager.workClass == VillagerBase.Work.Farmer)
                 {
                     //Debug.Log("Farmer goes to work");
                     villager.GoToWork(this.farm);
+                    villager.getsTired = true;
                 }
                 else if (villager.workClass == VillagerBase.Work.Miner)
                 {
                     //Debug.Log("Miner goes to work");
                     villager.GoToWork(this.mine);
+                    villager.getsTired = true;
                 }
-
-                villager.getsTired = true;
             }
             else
             {
-                Debug.Log("VillagerTooTiredToWork");
+                // Debug.Log("VillagerTooTiredToWork");
             }
         }
     }
@@ -188,7 +193,7 @@ public class VillagerManager : MonoBehaviour
                 thoseThatLearn.Add(villager);
             }
         }
-
+        // Debug.Log($"villager list {thoseThatLearn.Count}");
         //Have the villagers finish their learning (now tht I'm out of villagerList's foreach, I can modify it
         foreach (VillagerBase villager in thoseThatLearn)
         {
@@ -208,6 +213,7 @@ public class VillagerManager : MonoBehaviour
             {
                 villager.Die();
                 thoseToRemove.Add(villager);
+                happiness.prosperityPoints--;
             }
         }
 
@@ -230,10 +236,10 @@ public class VillagerManager : MonoBehaviour
             VillagerBase villagerToDie = villagerList[(int)Random.Range(0, villagerList.Count)];
             villagerToDie.Die();
             thoseToRemove.Add(villagerToDie);
-            Debug.Log("InWhile");
             whileBreaker++;
+            happiness.prosperityPoints -= 2;
         }
-        Debug.Log("OutWhile. whileBreaker = " + whileBreaker);
+        // Debug.Log("OutWhile. whileBreaker = " + whileBreaker);
 
         //Removes the killed villagers from the list
         foreach (VillagerBase villager in thoseToRemove)
@@ -262,6 +268,7 @@ public class VillagerManager : MonoBehaviour
             {
                 tmpVillager.tired = true;
                 tmpVillager.getsTired = false;
+                happiness.prosperityPoints--;
             }
 
             if (tmpVillager.tired == true)
@@ -271,6 +278,7 @@ public class VillagerManager : MonoBehaviour
                     GameObject randomHouse = availableHouses[Random.Range(0, availableHouses.Count)];   //Choose a random house
                     tmpVillager.GoToSleep(randomHouse.transform);                                       //Have the villager sleep in the house
                     availableHouses.Remove(randomHouse);                                                //Make the house unavailable
+                    happiness.prosperityPoints++;
                 }
                 else                                                                                    //If there isn't an available house  (No House? *Megamind Stare*)
                 {
@@ -279,6 +287,8 @@ public class VillagerManager : MonoBehaviour
             }
             tmpVillagerList.Remove(tmpVillager);                                                        //Removes villager from tmp list (to not have it again)
         }
+
+        VillagersNumbersIntoText.instance.UpdateVillagerNumber();
     }
 
     public void KillVillager(VillagerBase villager)
@@ -286,7 +296,11 @@ public class VillagerManager : MonoBehaviour
         villagerList.Remove(villager);
         villager.Die();
     }
-
+    
+    public int GetVillagerCount() 
+    { 
+        return villagerList.Count;
+    }
 
     public int GetBuilderNumber()
     {

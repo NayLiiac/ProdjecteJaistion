@@ -9,31 +9,43 @@ public class TimeController : MonoBehaviour
     public float timeOfDay;
     public int roundedTimeOfDay;
 
-    public float cycleLength = 24f;
+    public float cycleLength = 48f;
     public Speed2Time speed;
     public bool isNightTime;
     public int morning = 8;
-    public int night = 20;
-
-    public ClockTime clockTime;
+    public int night = 35;
+    public int timeSpeed = 1;
 
     public SpawnVillagers spawnVillager;
     public bool villagerHasSpawned = false;
 
-    //On définit une période de temps qui représente la nuit, et une le jour, et en fonction de cela, on fait spawn un villager au début du jour
+    public GetWoodRessource WoodCollector;
+    public GetStoneRessource StoneCollector;
+    public GetFoodRessource FoodCollector;
+    public int resourceCollectTimer = 4;
 
-    private void Update()
+    void Start()
     {
-
-        if (roundedTimeOfDay < morning || roundedTimeOfDay > night)
+        VillagerManager.instance.DayTime();
+    }
+    void Update()
+    {
+        // Activates at night
+        if ((roundedTimeOfDay < morning || roundedTimeOfDay > night) && isNightTime == false)
         {
             isNightTime = true;
             villagerHasSpawned = false;
+            VillagerManager.instance.NightTime();
+
+            WoodCollector.isHarvesting = false;
+            StoneCollector.isHarvesting = false;
+            FoodCollector.isHarvesting = false;
+
         }
 
-        if (roundedTimeOfDay == 8.0 && !villagerHasSpawned)
+        // Activates at day
+        if ((roundedTimeOfDay == 8.0 && !villagerHasSpawned) && isNightTime == true)
         {
-
             spawnVillager.VillagersSpawn();
             villagerHasSpawned= true;
             isNightTime = false;
@@ -43,34 +55,42 @@ public class TimeController : MonoBehaviour
     }
 
 
-    /*On crée les méthodes permettant de calculer l'heure qu'il est selon les paramètres définis, ici le cycleLength
-     qui représente la durée d'une journée totale, soit un cycle. Pour trouver l'heure à laquelle cela correspond selon notre cycleLength, 
-    on utilise un modulo*/
+    // Calculates the time of day at normal speed, using unity's internal clock
     private void UpdateTimeOne()
     {
         timeOfDay = (timeOfDay + Time.deltaTime) % cycleLength;
         roundedTimeOfDay = Mathf.RoundToInt(timeOfDay);
     }
 
-    //Cette deuxième méthode est la même mais fait passer le temps deux fois plus rapidement, par exemple pour passer la nuit plus vite
+    //Calculates the time of day at twice the speed, using unity's internal clock
     private void UpdateTimeTwo()
     {
         timeOfDay = (timeOfDay + Time.deltaTime * 2) % cycleLength;
         roundedTimeOfDay = Mathf.RoundToInt(timeOfDay);
-        clockTime.ClockSpeed();
     }
 
-    //Cette fonction définit quelle méthode est utilisée pour le passage du temps, soit en normal soit en *2
+    //Checks which time to use
     public void UpdateTime()
     {
         if (speed.isTimeTwo)
         {
             UpdateTimeTwo();
+            timeSpeed = 2;
+
+            WoodCollector.waitResource = resourceCollectTimer /  2;
+            StoneCollector.waitResource = resourceCollectTimer / 2;
+            FoodCollector.waitResource = resourceCollectTimer / 2;
+
         }
 
         else
         {
             UpdateTimeOne();
+            timeSpeed = 1;
+
+            WoodCollector.waitResource = resourceCollectTimer;
+            StoneCollector.waitResource = resourceCollectTimer;
+            FoodCollector.waitResource = resourceCollectTimer;
         }
     }
 

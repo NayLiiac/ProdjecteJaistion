@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -8,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public abstract class VillagerBase : MonoBehaviour
 {
     public int age = 0;
-    public int deathAge = 10;
+    public int deathAge = 15;
 
     public NavMeshAgent agent;
 
@@ -41,19 +40,18 @@ public abstract class VillagerBase : MonoBehaviour
         //Debug.Log($"treshold : {destinationReachedTreshold}, distance : {distanceToTarget}");
         if (distanceToTarget < destinationReachedTreshold)
         {
-            print("Destination reached");
             if (goesToHouse)
             {
                 Sleep();
                 this.tired = false;
                 goesToHouse = false;
 
-                Debug.Log($"villager now not tired {tired}");
+                // Debug.Log($"villager now not tired {tired}");
             }
             if (goesToSchool)
             {
                 goesToSchool = false;
-                Debug.Log($"villager is learning");
+                // Debug.Log($"villager is learning");
                 LearnNewJob();
             }
         }
@@ -64,13 +62,13 @@ public abstract class VillagerBase : MonoBehaviour
     {
         if (agent != null)
         {
-            Debug.Log("IGoToWork");
+            // Debug.Log("IGoToWork");
             agentTarget = WorkPosition.position;
             agent.destination = agentTarget;
         }
         else
         {
-            Debug.LogError("ERROR : VillagerBase : GoToWork : agent is null");
+            // Debug.LogError("ERROR : VillagerBase : GoToWork : agent is null");
         }
     }
 
@@ -79,14 +77,14 @@ public abstract class VillagerBase : MonoBehaviour
     {
         if (agent != null)
         {
-            Debug.Log("IGoToSleep");
+            // Debug.Log("IGoToSleep");
             agentTarget = HousePosition.position;
             agent.destination = agentTarget;
             goesToHouse = true;
         }
         else
         {
-            Debug.LogError("ERROR : VillagerBase : GoToSleep : agent is null");
+            // Debug.LogError("ERROR : VillagerBase : GoToSleep : agent is null");
         }
     }
 
@@ -99,11 +97,11 @@ public abstract class VillagerBase : MonoBehaviour
             goesToSchool = true;
 
             futurework = newWork;
-            Debug.Log($"{workClass} is now a {newWork}");
+            // Debug.Log($"{workClass} is now a {newWork}");
         }
         else
         {
-            Debug.LogError("ERROR : VillagerBase : GoToShool : agent is null");
+            // Debug.LogError("ERROR : VillagerBase : GoToShool : agent is null");
         }
     }
 
@@ -116,10 +114,10 @@ public abstract class VillagerBase : MonoBehaviour
         }
         else
         {
-            Debug.LogError("ERROR : VillagerBase : Wander : agent is null");
+            // Debug.LogError("ERROR : VillagerBase : Wander : agent is null");
         }
 
-        Debug.Log($"villager now still tired {tired}");
+        //Debug.Log($"villager now still tired {tired}");
     }
 
     //Makes the villager learn (they learn by sleeping don't question it)

@@ -14,7 +14,7 @@ public class StockFoodResources : MonoBehaviour
     public TextMeshProUGUI FoodNumber;
 
     //PickedUpResource and start coroutine for wait
-    public void RecupResource()
+    public void PickedUpResource()
     {
         if (build.isFarmBuilt == false)
         {

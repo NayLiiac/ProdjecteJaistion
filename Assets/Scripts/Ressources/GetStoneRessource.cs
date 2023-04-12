@@ -8,33 +8,26 @@ public class GetStoneRessource : MonoBehaviour
 
     public float waitResource = 4;
     public bool startHarvest;
+    public bool isHarvesting = false;
 
-    void Update()
-    {
-        if (startHarvest)
-        {
-            StockStoneResources.RecupResource();
-            startHarvest = false;
-        }
-    }
 
     //a villager enters the area
     void OnTriggerEnter(Collider collision)
     {
-        startHarvest = true;
-    }
-
-    //stop the coroutine when the villager is out the area
-    void OnTriggerExit(Collider collision)
-    {
-        startHarvest = false;
-        StopCoroutine(WaitResource());
+        if (collision.tag == "Villager")
+        {
+            StockStoneResources.PickedUpResource();
+            isHarvesting = true;
+        }
     }
 
     //wait time for retrieve a new resource
     public IEnumerator WaitResource()
     {
         yield return new WaitForSeconds(waitResource);
-        StockStoneResources.RecupResource();
+        if (isHarvesting) 
+        { 
+            StockStoneResources.PickedUpResource(); 
+        }
     }
 }

@@ -16,5 +16,9 @@ public class WinCondition : MonoBehaviour
          {
             SceneManager.LoadScene("VictoryScene");
          }
+         if (VillagerManager.instance.GetVillagerCount() == 0) 
+         {
+            SceneManager.LoadScene("DefeatScene");
+         }
      }
 }

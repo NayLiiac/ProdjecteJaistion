@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1046018008777332942}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1046018008344060239
 MonoBehaviour:
@@ -90,11 +90,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeOfDay: 8
+  roundedTimeOfDay: 0
   cycleLength: 24
   speed: {fileID: 1046018009524930640}
   isNightTime: 0
   morning: 8
   night: 20
+  clockTime: {fileID: 0}
+  spawnVillager: {fileID: 0}
+  villagerHasSpawned: 0
 --- !u!1 &1046018008777332940
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +129,6 @@ Transform:
   m_Children:
   - {fileID: 1046018008530208808}
   - {fileID: 1046018009358661376}
-  - {fileID: 1046018009560948460}
   - {fileID: 1046018008344060238}
   - {fileID: 1046018009524930647}
   m_Father: {fileID: 0}
@@ -207,7 +210,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1046018008777332942}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1046018009524930640
 MonoBehaviour:
@@ -222,49 +225,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTimeTwo: 0
---- !u!1 &1046018009560948451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1046018009560948460}
-  - component: {fileID: 1046018009560948461}
-  m_Layer: 0
-  m_Name: TimeText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1046018009560948460
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046018009560948451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1046018008777332942}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1046018009560948461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046018009560948451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca90b3fd920e723448a35e1a20b1dcda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: {fileID: 1046018008530208809}
-  timeText: {fileID: 0}

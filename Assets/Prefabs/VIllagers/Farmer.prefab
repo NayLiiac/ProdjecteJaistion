@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3741766406045552622}
   - component: {fileID: 3741766406045552597}
   - component: {fileID: 3741766406045552596}
-  - component: {fileID: 1507809220684754931}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Villager
@@ -132,8 +131,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   age: 0
   deathAge: 10
-  tired: 0
   agent: {fileID: 3741766406045552596}
+  getsTired: 0
+  tired: 0
+  goesToHouse: 0
+  goesToSchool: 0
+  isLearning: 0
 --- !u!195 &3741766406045552596
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -156,18 +159,3 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1507809220684754931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3741766406045552620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2b293064af75347833f255d8bd0898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StockFoodResources: {fileID: 0}
-  waitResource: 2
-  startHarvest: 0
