@@ -150,6 +150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &249397477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6828335577879084318, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 662052781080977854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &327773330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,6 +168,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3893080445555729952, guid: 53ac963730527ac4db889228000ec272, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893080445555729952, guid: 53ac963730527ac4db889228000ec272, type: 3}
+      propertyPath: scrollSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3893080445555729953, guid: 53ac963730527ac4db889228000ec272, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -433,6 +452,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 368725511f8e2ad4ea9f2a9df626c090, type: 3}
+--- !u!114 &1054533726 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8832178526232116951, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 662052781080977854}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1061079550 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1046018008530208809, guid: 3b32a91c23cf8284489db57386b169a4, type: 3}
@@ -702,9 +732,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodquantity: 10
-  villagerViewer: {fileID: 0}
-  workText: {fileID: 0}
-  ageText: {fileID: 0}
+  villagerViewer: {fileID: 2073126832}
+  workText: {fileID: 249397477}
+  ageText: {fileID: 1054533726}
   villagerList:
   - {fileID: 1405159924}
   houseList: []
@@ -902,6 +932,11 @@ PrefabInstance:
       objectReference: {fileID: 802096208429249314}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b32a91c23cf8284489db57386b169a4, type: 3}
+--- !u!1 &2073126832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8262908365830509843, guid: 2cef28514f3795f40bf07f9b98ad9f9a, type: 3}
+  m_PrefabInstance: {fileID: 662052781080977854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &247080674223996175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1619,9 +1654,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 6304967346897842881, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1662,6 +1713,10 @@ PrefabInstance:
     - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376579084474993433, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0e336d5db6e9184ca14674f8a23d622, type: 3}
