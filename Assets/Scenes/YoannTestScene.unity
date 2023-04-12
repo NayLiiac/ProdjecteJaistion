@@ -385,6 +385,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bffb2aa9b53c48979cf64506b6343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &457685027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 851414430015577382, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: GetStoneRessource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 851414430015577383, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: GetWoodRessource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 851414430342006649, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: build
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 851414430342006649, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: GetFoodRessource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 993850391879212170, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_Name
+      value: Ressources
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.30516702
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.608204
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.1383443
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670133723378719420, guid: 621d089208f60f945955fa141e3edb50, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 621d089208f60f945955fa141e3edb50, type: 3}
 --- !u!1 &603528271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,10 +1769,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87fad7d008aa0341ad3b7e54ec0d612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodquantity: 8
+  foodquantity: {fileID: 0}
+  schoolPlaced: 0
   villagerViewer: {fileID: 711420743}
   workText: {fileID: 2079850642}
   ageText: {fileID: 725289445}
+  workbuttons: []
   villagerList:
   - {fileID: 401923311}
   - {fileID: 1132708580}
