@@ -1,17 +1,24 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VillagerManager : MonoBehaviour
 {
     //Singleton
     public static VillagerManager instance;
 
-    public int foodquantity = 10;
+    //Different variables
+    public StockFoodResources foodquantity;
+    public bool schoolPlaced = false;
+
+    //The UI
     public GameObject villagerViewer;
     public TextMeshProUGUI workText;
     public TextMeshProUGUI ageText;
+    public Button[] workbuttons;
 
+    //The lists of villagers and houses
     public List<VillagerBase> villagerList = new List<VillagerBase>();
     public List<GameObject> houseList = new List<GameObject>();
 
@@ -65,16 +72,37 @@ public class VillagerManager : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Villager")
                 {
                     selectedVillager = hit.transform.gameObject.GetComponent<VillagerBase>();
-                    villagerViewer.SetActive(true);
                     Debug.Log(hit.transform.gameObject.tag);
-                    workText.SetText($"{selectedVillager.workClass}");
-                    ageText.SetText($"Age : {selectedVillager.age}");
+
+                    villagerViewer.SetActive(true);
+                    ChangeUI();
                 }
                 else
                 {
                     selectedVillager = null;
                     villagerViewer.SetActive(false);
                 }
+            }
+        }
+    }
+
+    public void ChangeUI()
+    {
+        workText.SetText($"{selectedVillager.workClass}");
+        ageText.SetText($"Age : {selectedVillager.age}");
+
+        if (schoolPlaced == false)
+        {
+            foreach (Button button in workbuttons)
+            {
+                button.interactable = false;
+            }
+        }
+        else
+        {
+            foreach (Button button in workbuttons)
+            {
+                button.interactable = true;
             }
         }
     }
@@ -197,7 +225,7 @@ public class VillagerManager : MonoBehaviour
         int whileBreaker = 0;
 
         //Kills villagers if there isn't enough food
-        while ((foodquantity < (villagerList.Count - thoseToRemove.Count)) && whileBreaker < 666)
+        while ((foodquantity.FoodPickedUp < (villagerList.Count - thoseToRemove.Count)) && whileBreaker < 666)
         {
             VillagerBase villagerToDie = villagerList[(int)Random.Range(0, villagerList.Count)];
             villagerToDie.Die();
@@ -214,7 +242,8 @@ public class VillagerManager : MonoBehaviour
         }
 
         //Stays positive or equal to 0 because of the while just above (will be modified later down the line)
-        foodquantity -= villagerList.Count;
+        foodquantity.FoodPickedUp -= villagerList.Count;
+        foodquantity.UpdateResourceText();
 
         
         //Additionnal lists that can be modified while going through all the houses and villagers
