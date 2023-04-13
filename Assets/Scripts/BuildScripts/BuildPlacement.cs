@@ -123,7 +123,7 @@ public class BuildPlacement : MonoBehaviour
             }
         }
     }
-    // Éviter la superposition des bâtiments
+    // Avoid build superposition
     void OnCollisionEnter(Collision collision)
     {
         buildCollision = true;
