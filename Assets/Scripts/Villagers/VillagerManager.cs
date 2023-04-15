@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class VillagerManager : MonoBehaviour
@@ -289,6 +290,7 @@ public class VillagerManager : MonoBehaviour
         }
 
         VillagersNumbersIntoText.instance.UpdateVillagerNumber();
+        happiness.CheckVictory();
     }
 
     public void KillVillager(VillagerBase villager)
@@ -330,6 +332,15 @@ public class VillagerManager : MonoBehaviour
         }
 
         return tiredNumber;
+    }
+
+    // Changes the speed of the villagers depending on the speed game
+    public void ChangeVillagerSpeed(int speed)
+    {
+        foreach (VillagerBase villager in villagerList)
+        {
+            villager.GetComponent<NavMeshAgent>().speed = speed;
+        }
     }
 
 }

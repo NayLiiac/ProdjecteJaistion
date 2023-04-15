@@ -81,6 +81,7 @@ public class TimeController : MonoBehaviour
             StoneCollector.waitResource = resourceCollectTimer / 2;
             FoodCollector.waitResource = resourceCollectTimer / 2;
 
+            VillagerManager.instance.ChangeVillagerSpeed(8);
         }
 
         else
@@ -91,6 +92,8 @@ public class TimeController : MonoBehaviour
             WoodCollector.waitResource = resourceCollectTimer;
             StoneCollector.waitResource = resourceCollectTimer;
             FoodCollector.waitResource = resourceCollectTimer;
+
+            VillagerManager.instance.ChangeVillagerSpeed(4);
         }
     }
 

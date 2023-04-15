@@ -14,11 +14,11 @@ public class WinCondition : MonoBehaviour
      {
          if (prosperityPoints >= valueWinCondition)
          {
-            SceneManager.LoadScene("VictoryScene");
+             SceneManager.LoadScene("VictoryScene");
          }
-         if (VillagerManager.instance.GetVillagerCount() == 0) 
+         if (VillagerManager.instance.villagerList.Count == 0) 
          {
-            SceneManager.LoadScene("DefeatScene");
+             SceneManager.LoadScene("DefeatScene");
          }
      }
 }
